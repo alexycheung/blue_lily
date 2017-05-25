@@ -1,0 +1,17 @@
+<div id="header" class="pure-menu pure-menu-horizontal">
+	<%= link_to "BlueLily", root_path, class: "pure-menu-heading pure-menu-link" %>
+  <ul class="pure-menu-list">
+  	<% if user_signed_in? %>
+  		<li class="pure-menu-item">
+  			<%= link_to "Log out", destroy_user_session_path, method: :delete, class: "pure-menu-link" %>
+  		</li>
+  	<% else %>
+	    <li class="pure-menu-item">
+	    	<%= link_to "Sign up", new_user_registration_path, class: "pure-menu-link" %>
+	    </li>
+	    <li class="pure-menu-item">
+	    	<%= link_to "Log in", new_user_session_path, class: "pure-menu-link" %>
+	    </li>
+	  <% end %>
+  </ul>
+</div>

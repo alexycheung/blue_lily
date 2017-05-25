@@ -3,12 +3,18 @@
   <head>
     <title>BlueLily</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- purecss library -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
   </head>
 
   <body>
-    <%= yield %>
+  	<%= render partial: "layouts/header" %>
+  	<%= render partial: "layouts/flash" unless flash.empty? %>
+  	<div class="yield-container">
+    	<%= yield %>
+    </div>
   </body>
 </html>

@@ -1,0 +1,25 @@
+@import "universal.scss";
+
+
+/* _flash */
+
+.flash {
+	padding: 10px 1em;
+
+	&.alert {
+		background: $error;
+		color: white;
+	}
+
+	&.notice {
+		background: $primary;
+		color: white;
+	}
+}
+
+
+/* application */
+
+.yield-container {
+	padding: 1em;
+}

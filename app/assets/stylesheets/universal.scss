@@ -1,0 +1,21 @@
+@import "colors.scss";
+@import "mixins.scss";
+
+
+/* forms */
+
+form {
+	.form-inputs {
+		.input {
+			padding-bottom: 0.5em;
+
+			label {
+				margin-bottom: 0.5em;
+			}
+		}
+	}
+
+	.form-actions {
+		padding-top: 0.5em;
+	}
+}
