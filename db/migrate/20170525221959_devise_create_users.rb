@@ -4,7 +4,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :phone
       t.string :company
-      t.string :role, default: "admin"
+      t.string :role, default: "agent"
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""

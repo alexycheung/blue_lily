@@ -1,1 +1,17 @@
-<%= render @users %>
+<div id="users-index">
+	<%= link_to "Add User", new_user_path, class: "pure-button pure-button-primary", id: "add-user-button" %>
+	<table class="pure-table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Phone</th>
+				<th>Role</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<%= render @users %>
+		</tbody>
+	</table>
+</div>

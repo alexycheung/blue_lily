@@ -1,0 +1,14 @@
+<%= simple_form_for(@user, html: { class: "pure-form pure-form-stacked" }) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :name, error: false, autofocus: true %>
+    <%= f.input :phone, error: false %>
+    <%= f.input :company, error: false %>
+    <%= f.input :email, required: true, error: false %>
+    <%= f.input :role, required: true, error: false, as: :select, collection: ["admin", "agent"] %>
+    <%= f.input :password, required: true, error: false %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Save", class: "pure-button pure-button-primary" %>
+  </div>
+<% end %>

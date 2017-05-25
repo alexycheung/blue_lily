@@ -2,10 +2,10 @@
   <%= devise_error_messages! %>
 
   <div class="form-inputs">
-  	<%= f.input :name, error: false %>
+  	<%= f.input :name, error: false, autofocus: true %>
   	<%= f.input :phone, error: false %>
   	<%= f.input :company, error: false %>
-    <%= f.input :email, required: true, autofocus: true, error: false %>
+    <%= f.input :email, required: true, error: false %>
     <%= f.input :password, required: true, error: false %>
   </div>
 

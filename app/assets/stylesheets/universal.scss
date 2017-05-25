@@ -6,16 +6,22 @@
 
 form {
 	.form-inputs {
+		padding: 1em;
+
 		.input {
 			padding-bottom: 0.5em;
 
 			label {
 				margin-bottom: 0.5em;
 			}
+
+			select {
+				width: 187px;
+			}
 		}
 	}
 
 	.form-actions {
-		padding-top: 0.5em;
+		padding-left: 1em;
 	}
 }
