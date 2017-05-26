@@ -11,5 +11,6 @@ class User < ApplicationRecord
   has_many :properties
 
   scope :by_date, -> { order("created_at DESC") }
+  scope :agents, -> { where(role: "agent") }
 end
 

@@ -1,11 +1,25 @@
 <tr>
 	<td>
-		<%= property.address %>,
-		<%= property.city %>,
+		<%= fa_icon "circle", class: "#{status(property)} status" %>
+	</td>
+	<td>
+		<%= property.address %>
+	</td>
+	<td>
+		<%= property.city %>
+	</td>
+	<td>
 		<%= property.state %>
 	</td>
 	<td><%= property.user.name %></td>
 	<td><%= property.start_date.strftime("%D") %></td>
 	<td><%= property.end_date.strftime("%D") %></td>
-	<td><%= status(property) %></td>
+	<td>
+		<%= link_to edit_property_path(property), class: "pure-button" do %>
+			<%= fa_icon "pencil" %>
+		<% end %>
+		<%= link_to property, method: :delete, data: { confirm: "Sure you want to delete this property? "}, class: "pure-button" do %>
+			<%= fa_icon "trash" %>
+		<% end %>
+	</td>
 </tr>

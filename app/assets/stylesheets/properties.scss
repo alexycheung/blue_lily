@@ -10,3 +10,19 @@
 		margin-bottom: 1em;
 	}
 }
+
+
+/* _property */
+
+.status {
+	font-size: 12px;
+	color: white;
+
+	&.upcoming {
+		color: #FFA500;
+	}
+
+	&.started {
+		color: $primary;
+	}
+}

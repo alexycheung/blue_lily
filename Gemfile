@@ -24,6 +24,10 @@ gem 'devise'
 gem 'simple_form'
 # Vector icons. Read more: https://github.com/bokmann/font-awesome-rails
 gem 'font-awesome-rails'
+# Jquery UI assets. Read more: https://github.com/jquery-ui-rails/jquery-ui-rails
+gem 'jquery-ui-rails'
+# Transform month/day/year substring into ISO format string. Read more: https://github.com/jeremyevans/ruby-american_date
+gem 'american_date'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

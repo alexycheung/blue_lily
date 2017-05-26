@@ -1,8 +1,8 @@
 module PropertiesHelper
 	def status(property)
-		if DateTime.now < property.start_date
+		if Date.today <= property.start_date
 			return "upcoming"
-		elsif DateTime.now < property.end_date
+		elsif Date.today <= property.end_date
 			return "started"
 		else
 			return "ended"

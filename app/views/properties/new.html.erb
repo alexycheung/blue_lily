@@ -1,0 +1,21 @@
+<%= simple_form_for @property, html: { class: "pure-form pure-form-stacked" } do |f| %>
+  <div class="form-inputs">
+    <%= f.input :zillow_url, label: "Zillow URL", error: false %>
+    <%= f.input :address, error: false %>
+    <%= f.input :city, error: false %>
+    <%= f.input :state, error: false %>
+    <%= f.input :zip, error: false %>
+    <%= f.input :start_date, as: :string, error: false %>
+    <%= f.input :end_date, as: :string, error: false %>
+    <%= f.input :bedrooms, error: false %>
+    <%= f.input :bathrooms, error: false %>
+    <%= f.input :sqft, error: false %>
+    <%= f.input :price, error: false %>
+    <%= f.input :deposit, error: false %>
+    <%= f.input :user_id, as: :select, collection: @agents, label: "Agent", error: false %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Save", class: "pure-button pure-button-primary" %>
+  </div>
+<% end %>
