@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525221959) do
+ActiveRecord::Schema.define(version: 20170526151251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "properties", force: :cascade do |t|
+    t.string   "zillow_url"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "bedrooms"
+    t.integer  "bathrooms"
+    t.integer  "sqft"
+    t.decimal  "price"
+    t.decimal  "deposit"
+    t.string   "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
