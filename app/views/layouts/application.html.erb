@@ -13,8 +13,6 @@
   <body>
   	<%= render partial: "layouts/header" %>
   	<%= render partial: "layouts/flash" unless flash.empty? %>
-  	<div class="yield-container">
-    	<%= yield %>
-    </div>
+    <%= yield %>
   </body>
 </html>

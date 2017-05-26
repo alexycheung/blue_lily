@@ -13,4 +13,6 @@ class Property < ApplicationRecord
 	validates :price, presence: true, numericality: true
 	validates :deposit, presence: true, numericality: true
 	validates :user_id, presence: true
+
+	scope :by_start_date, -> { order("start_date DESC") }
 end

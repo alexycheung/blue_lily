@@ -1,0 +1,11 @@
+<tr>
+	<td>
+		<%= property.address %>,
+		<%= property.city %>,
+		<%= property.state %>
+	</td>
+	<td><%= property.user.name %></td>
+	<td><%= property.start_date.strftime("%D") %></td>
+	<td><%= property.end_date.strftime("%D") %></td>
+	<td><%= status(property) %></td>
+</tr>
