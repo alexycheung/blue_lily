@@ -1,0 +1,19 @@
+<div id="items-index">
+	<%= link_to "Add Item", new_item_path, class: "pure-button pure-button-primary", id: "add-item-button" %>
+	<table class="pure-table">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Size</th>
+				<th>Color</th>
+				<th>Category</th>
+				<th>Condition</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<%= render @items %>
+		</tbody>
+	</table>
+</div>

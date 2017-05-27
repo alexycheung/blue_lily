@@ -1,3 +1,4 @@
+# create initial users
 users = [
 	{
 		name: "Vencci Hung",
@@ -28,4 +29,19 @@ users.each do |user|
 			password: user[:password],
 		)
 	end
+end
+
+# create initial categories
+
+categories = [
+	"decor",
+	"desks",
+	"chairs",
+	"drawers",
+]
+
+categories.each do |category|
+	Category.where(
+		name: category,
+	).first_or_create
 end

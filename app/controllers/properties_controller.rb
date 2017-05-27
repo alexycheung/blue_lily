@@ -1,9 +1,12 @@
 class PropertiesController < ApplicationController
 	before_action :authenticate_user!
 
+	def index
+		@properties = Property.by_start_date
+	end
+
 	def new
 		@property = Property.new
-		@agents = User.agents
 	end
 
 	def create
@@ -13,13 +16,12 @@ class PropertiesController < ApplicationController
 			redirect_to properties_path
 		else
 			flash.now[:alert] = @property.errors.full_messages.first
-			render "new"
+			render action: "new"
 		end
 	end
 
 	def edit
 		@property = Property.find(params[:id])
-		@agents = User.agents
 	end
 
 	def update
@@ -41,10 +43,6 @@ class PropertiesController < ApplicationController
 			flash[:alert] = @property.errors.full_messages.first
 		end
 		redirect_to properties_path
-	end
-
-	def index
-		@properties = Property.by_start_date
 	end
 
 	private
