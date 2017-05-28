@@ -1,14 +1,15 @@
 <%= simple_form_for @item, html: { class: "pure-form pure-form-stacked" } do |f| %>
   <div class="form-inputs">
-    <%= f.input :category_id, error: false, as: :select, collection: @categories %>
-    <%= f.input :name, error: false %>
+    <%= f.filepicker_field :photo, button_text: item_photo(@item), button_class: "upload-photo pure-button", onchange: "onPhotoUpload(event)" %>
+    <%= f.input :name, error: false, autofocus: true %>
+    <%= f.input :color, error: false %>
+    <%= f.input :description, error: false %>
     <%= f.input :size, error: false, as: :select, collection: ["small", "medium", "large"] %>
+    <%= f.input :company, error: false %>
     <%= f.input :condition, error: false, as: :select, collection: ["new", "like new", "very good", "good", "acceptable", "unacceptable"] %>
+    <%= f.input :category_id, error: false, as: :select, collection: @categories %>
     <%= f.input :purchase_price, error: false %>
     <%= f.input :sale_price, error: false %>
-    <%= f.input :description, error: false %>
-    <%= f.input :company, error: false %>
-    <%= f.input :color, error: false %>
   </div>
 
   <div class="form-actions">

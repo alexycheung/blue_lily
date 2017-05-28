@@ -45,9 +45,16 @@ class ItemsController < ApplicationController
 		redirect_to items_path
 	end
 
+	def zoom
+		@item = Item.find(params[:id])
+		respond_to do |format|
+			format.js
+		end
+	end
+
 	private
 
 		def item_params
-			params.require(:item).permit(:name, :size, :condition, :purchase_price, :sale_price, :description, :company, :color, :category_id)
+			params.require(:item).permit(:name, :photo, :size, :condition, :purchase_price, :sale_price, :description, :company, :color, :category_id)
 		end
 end

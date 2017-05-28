@@ -1,3 +1,8 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+# save filepicker photo to db
+@onPhotoUpload = (event) ->
+	 $(".upload-photo").html "<img src='"+event.fpfile.url+"/convert?fit=crop&h=187&w=187'>"
+
+$(document).ready ->
+	$('html').on 'click', '#close-overlay svg', ->
+	  $('#overlay').remove()
+	  return

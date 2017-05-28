@@ -1,7 +1,12 @@
 <tr>
-	<!-- TODO: item availability -->
-	<td></td>
-	<td><%= item.name %></td>
+	<td>
+		<%= link_to zoom_path(item), remote: true do %>
+			<%= filepicker_image_tag item.photo, fit: 'crop', w: 40, h: 40 %>
+		<% end %>
+	</td>
+	<td>
+		<%= item.name %>
+	</td>
 	<td><%= item.size %></td>
 	<td><%= item.color %></td>
 	<td><%= item.category.name %></td>
