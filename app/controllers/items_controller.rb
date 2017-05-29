@@ -52,6 +52,32 @@ class ItemsController < ApplicationController
 		end
 	end
 
+	def cancel_reservation
+		@item = Item.find(params[:id])
+		@property = Property.find(params[:property_id])
+		if Reservation.where(item_id: @item.id, property_id: @property.id).any?
+			Reservation.where(item_id: @item.id, property_id: @property.id).first.destroy
+			@item.reload
+		end
+		respond_to do |format|
+			format.js
+		end
+	end
+
+	def reserve
+		@item = Item.find(params[:id])
+		@property = Property.find(params[:property_id])
+		Reservation.create(
+			reserved_at: Date.today,
+			item_id: @item.id,
+			property_id: @property.id,
+		)
+		@item.reload
+		respond_to do |format|
+			format.js
+		end
+	end
+
 	private
 
 		def item_params

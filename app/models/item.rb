@@ -9,6 +9,30 @@ class Item < ApplicationRecord
 	validates :category_id, presence: true, numericality: true
 
 	belongs_to :category
+	has_many :reservations
+	has_many :properties, through: :reservations
 
 	scope :by_date, -> { order("created_at DESC") }
+
+	# Return true if item is reserved on date
+	def reserved?(start_date, end_date)
+		item = self
+		item.reservations.each do |reservation|
+			property = reservation.property
+			if (start_date - property.start_date) * (property.end_date - end_date) >= 0
+				return true
+			end
+		end
+		return false
+	end
+
+	# Return last reservation
+	def last_reservation
+		item = self
+		last_reservation = nil
+		if item.reservations.any?
+			last_reservation = item.reservations.first
+		end
+		return last_reservation
+	end
 end

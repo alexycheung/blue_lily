@@ -45,6 +45,16 @@ class PropertiesController < ApplicationController
 		redirect_to properties_path
 	end
 
+	def assign
+		@property = Property.find(params[:id])
+		@items = []
+		Item.all.each do |item|
+			if item.reservations.where(property_id: @property.id).any? || !item.reserved?(@property.start_date, @property.end_date)
+				@items << item
+			end
+		end
+	end
+
 	private
 
 		def property_params

@@ -1,0 +1,21 @@
+<tr id="item_<%= item.id %>">
+	<td>
+		<%= link_to zoom_path(item), remote: true do %>
+			<%= filepicker_image_tag item.photo, fit: 'crop', w: 40, h: 40 %>
+		<% end %>
+	</td>
+	<td>
+		<%= item.name %>
+	</td>
+	<td><%= item.size %></td>
+	<td><%= item.color %></td>
+	<td><%= item.category.name %></td>
+	<td><%= item.condition %></td>
+	<td>
+		<% if item.reservations.where(property_id: @property.id).any? %>
+			<%= link_to "Reserved", cancel_reservation_path(item, property_id: @property.id), remote: true, method: :post, class: "pure-button" %>
+		<% else %>
+			<%= link_to "Reserve", reserve_path(item, property_id: @property.id), remote: true, method: :post, class: "pure-button pure-button-primary" %>
+		<% end %>
+	</td>
+</tr>

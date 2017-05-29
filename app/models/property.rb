@@ -1,6 +1,4 @@
 class Property < ApplicationRecord
-	belongs_to :user
-
 	validates :address, presence: true
 	validates :city, presence: true
 	validates :state, presence: true
@@ -13,6 +11,10 @@ class Property < ApplicationRecord
 	validates :price, presence: true, numericality: true
 	validates :deposit, presence: true, numericality: true
 	validates :user_id, presence: true
+
+	belongs_to :user
+	has_many :reservations
+	has_many :items, through: :reservations
 
 	scope :by_start_date, -> { order("start_date DESC") }
 end
