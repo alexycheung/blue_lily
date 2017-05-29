@@ -26,7 +26,13 @@ class PropertiesController < ApplicationController
 
 	def update
 		@property = Property.find(params[:id])
-		if @property.update_attributes(property_params)
+		if @property.schedule_conflict?(
+			property_params[:start_date].to_date,
+			property_params[:end_date].to_date,
+		)
+			flash.now[:alert] = "Property dates conflict with item availability"
+			render "edit"
+		elsif @property.update_attributes(property_params)
 			flash[:notice] = "Updated property"
 			redirect_to properties_path
 		else

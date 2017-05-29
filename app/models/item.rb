@@ -19,7 +19,11 @@ class Item < ApplicationRecord
 		item = self
 		item.reservations.each do |reservation|
 			property = reservation.property
-			if (start_date - property.start_date) * (property.end_date - end_date) >= 0
+			if start_date >= property.start_date && start_date <= property.end_date
+				return true
+			elsif end_date >= property.start_date && end_date <= property.end_date
+				return true
+			elsif start_date <= property.start_date && end_date >= property.end_date
 				return true
 			end
 		end
