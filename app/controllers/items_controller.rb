@@ -78,6 +78,50 @@ class ItemsController < ApplicationController
 		end
 	end
 
+	def checkout
+		@item = Item.find(params[:id])
+		@property = Property.find(params[:property_id])
+		reservation = Reservation.where(item_id: @item.id, property_id: @property.id).first
+		reservation.checkout = Date.today
+		reservation.save
+		respond_to do |format|
+			format.js
+		end
+	end
+
+	def reverse_checkout
+		@item = Item.find(params[:id])
+		@property = Property.find(params[:property_id])
+		reservation = Reservation.where(item_id: @item.id, property_id: @property.id).first
+		reservation.checkout = nil
+		reservation.save
+		respond_to do |format|
+			format.js
+		end
+	end
+
+	def checkin
+		@item = Item.find(params[:id])
+		@property = Property.find(params[:property_id])
+		reservation = Reservation.where(item_id: @item.id, property_id: @property.id).first
+		reservation.checkin = Date.today
+		reservation.save
+		respond_to do |format|
+			format.js
+		end
+	end
+
+	def reverse_checkin
+		@item = Item.find(params[:id])
+		@property = Property.find(params[:property_id])
+		reservation = Reservation.where(item_id: @item.id, property_id: @property.id).first
+		reservation.checkin = nil
+		reservation.save
+		respond_to do |format|
+			format.js
+		end
+	end
+
 	private
 
 		def item_params

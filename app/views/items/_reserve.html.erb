@@ -12,10 +12,20 @@
 	<td><%= item.category.name %></td>
 	<td><%= item.condition %></td>
 	<td>
-		<% if item.reservations.where(property_id: @property.id).any? %>
-			<%= link_to "Reserved", cancel_reservation_path(item, property_id: @property.id), remote: true, method: :post, class: "pure-button" %>
-		<% else %>
+		<% if !item.reservations.where(property_id: @property.id).any? %>
 			<%= link_to "Reserve", reserve_path(item, property_id: @property.id), remote: true, method: :post, class: "pure-button pure-button-primary" %>
+		<% else %>
+			<% if !item.checked_out?(@property) %>
+				<%= link_to "Reserved", cancel_reservation_path(item, property_id: @property.id), remote: true, method: :post, class: "pure-button" %>
+				<%= link_to "Check Out", checkout_path(item, property_id: @property.id), remote: true, method: :post, class: "pure-button pure-button-primary" %>
+			<% else %>
+				<% if item.checked_in?(@property) %>
+					<%= link_to "Checked In", reverse_checkin_path(item, property_id: @property.id), remote: true, method: :post, class: "pure-button" %>
+				<% elsif item.checked_out?(@property) %>
+					<%= link_to "Checked Out", reverse_checkout_path(item, property_id: @property.id), remote: true, method: :post, class: "pure-button" %>
+					<%= link_to "Check In", checkin_path(item, property_id: @property.id), remote: true, method: :post, class: "pure-button pure-button-primary" %>
+				<% end %>
+			<% end %>
 		<% end %>
 	</td>
 </tr>

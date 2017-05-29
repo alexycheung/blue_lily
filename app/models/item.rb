@@ -35,4 +35,22 @@ class Item < ApplicationRecord
 		end
 		return last_reservation
 	end
+
+	# Return true if item is checked out under property
+	def checked_out?(property)
+		item = self
+		if Reservation.where(property_id: property.id, item_id: item.id).where("checkout IS NOT NULL").any?
+			return true
+		end
+		return false
+	end
+
+	# Return true if item is checked in under property
+	def checked_in?(property)
+		item = self
+		if Reservation.where(property_id: property.id, item_id: item.id).where("checkin IS NOT NULL").any?
+			return true
+		end
+		return false
+	end
 end

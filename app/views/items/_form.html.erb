@@ -4,7 +4,7 @@
     <%= f.input :name, error: false, autofocus: true %>
     <%= f.input :color, error: false %>
     <%= f.input :description, error: false %>
-    <%= f.input :size, error: false, as: :select, collection: ["small", "medium", "large"] %>
+    <%= f.input :size, error: false, as: :select, collection: ["S", "M", "L"] %>
     <%= f.input :company, error: false %>
     <%= f.input :condition, error: false, as: :select, collection: ["new", "like new", "very good", "good", "acceptable", "unacceptable"] %>
     <%= f.input :category_id, error: false, as: :select, collection: @categories %>

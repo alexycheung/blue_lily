@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 20170529014132) do
     t.integer  "item_id"
     t.integer  "property_id"
     t.date     "reserved_at"
-    t.date     "check_in"
-    t.date     "check_out"
+    t.date     "checkin"
+    t.date     "checkout"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["item_id"], name: "index_reservations_on_item_id", using: :btree
