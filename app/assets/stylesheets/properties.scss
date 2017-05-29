@@ -36,4 +36,16 @@
 	h4 {
 		margin-top: 0;
 	}
+
+	table {
+		tbody {
+			tr {
+				td {
+					.reservations-index-link {
+						color: rgba(0,0,0,.8);
+					}
+				}
+			}
+		}
+	}
 }

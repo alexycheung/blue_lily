@@ -1,0 +1,13 @@
+<tr>
+	<td>
+		<%= link_to assign_path(reservation.property), class: "properties-assign-link" do %>
+			<%= reservation.property.address %>,
+			<%= reservation.property.city %>,
+			<%= reservation.property.state %>
+		<% end %>
+	</td>
+	<td><%= reservation.property.user.name %></td>
+	<td><%= reservation.reserved_at.strftime("%D") %></td>
+	<td><%= reservation.checkout.strftime("%D") if reservation.checkout %></td>
+	<td><%= reservation.checkin.strftime("%D") if reservation.checkin %></td>
+</tr>

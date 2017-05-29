@@ -1,0 +1,19 @@
+<div id="reservations-index">
+	<h4>
+		<%= filepicker_image_tag @item.photo, fit: 'crop', h: 40 %>
+		<div class="item-name"><%= @item.name %></div>
+	</h4>
+	<table class="pure-table">
+		<thead>
+			<tr>
+				<th>Property</th>
+				<th>Agent</th>
+				<th>Reserved</th>
+				<th>Check Out</th>
+				<th>Check In</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%= render @reservations %>
+		</tbody>
+</div>

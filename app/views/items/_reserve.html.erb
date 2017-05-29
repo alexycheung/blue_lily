@@ -5,7 +5,7 @@
 		<% end %>
 	</td>
 	<td>
-		<%= item.name %>
+		<%= link_to item.name, reservations_path(item), class: "reservations-index-link" %>
 	</td>
 	<td><%= item.size %></td>
 	<td><%= item.color %></td>

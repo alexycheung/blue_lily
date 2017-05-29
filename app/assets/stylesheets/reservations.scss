@@ -1,0 +1,35 @@
+@import "universal.scss";
+
+
+/* index */
+
+#reservations-index {
+	padding: 1em;
+
+	h4 {
+		overflow: auto;
+		margin-top: 0;
+
+		img {
+			float: left;
+		}
+
+		.item-name {
+			float: left;
+			margin: 11px 0.5em;
+		}
+	}
+
+	table {
+		tbody {
+			tr {
+				td {
+					.properties-assign-link {
+						color: rgba(0,0,0,.8);
+					}
+				}
+			}
+		}
+	}
+}
+

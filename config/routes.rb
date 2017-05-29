@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   post '/items/:id/reverse_checkin', to: 'items#reverse_checkin', as: 'reverse_checkin'
   post '/items/:id/checkout', to: 'items#checkout', as: 'checkout'
   post '/items/:id/reverse_checkout', to: 'items#reverse_checkout', as: 'reverse_checkout'
+
+  get '/items/:id/reservations', to: 'reservations#index', as: 'reservations'
 end
