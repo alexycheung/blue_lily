@@ -2,6 +2,61 @@
 	<h4>
 		<%= @property.address %>, <%= @property.city %>, <%= @property.state %>
 	</h4>
+
+	<div id="filter">
+		<div class="dropdown">
+			<a id="color-trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<%= params[:color] ? params[:color] : "all colors" %>
+				<%= fa_icon 'caret-down' %>
+			</a>
+			<ul class="dropdown-menu" aria-labelledby="color-trigger">
+				<% @colors.each do |color| %>
+					<li><%= link_to color, assign_property_path(@property, color: color, condition: params[:condition], category: params[:category], size: params[:size]) %></li>
+				<% end %>
+				<li><%= link_to "all colors", assign_property_path(@property, color: nil, condition: params[:condition], category: params[:category], size: params[:size]) %>
+			</ul>
+		</div>
+
+		<div class="dropdown">
+			<a id="condition-trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<%= params[:condition] ? params[:condition] : "all conditions" %>
+				<%= fa_icon 'caret-down' %>
+			</a>
+			<ul class="dropdown-menu" aria-labelledby="condition-trigger">
+				<% @conditions.each do |condition| %>
+					<li><%= link_to condition, assign_property_path(@property, condition: condition, color: params[:color], category: params[:category], size: params[:size]) %></li>
+				<% end %>
+				<li><%= link_to "all conditions", assign_property_path(@property, condition: nil, color: params[:color], category: params[:category], size: params[:size]) %>
+			</ul>
+		</div>
+
+		<div class="dropdown">
+			<a id="category-trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<%= params[:category] ? params[:category] : "all categories" %>
+				<%= fa_icon 'caret-down' %>
+			</a>
+			<ul class="dropdown-menu" aria-labelledby="category-trigger">
+				<% @categories.each do |category| %>
+					<li><%= link_to category, assign_property_path(@property, category: category, condition: params[:condition], color: params[:color], size: params[:size]) %></li>
+				<% end %>
+				<li><%= link_to "all categories", assign_property_path(@property, category: nil, condition: params[:condition], color: params[:color], size: params[:size]) %>
+			</ul>
+		</div>
+
+		<div class="dropdown">
+			<a id="size-trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<%= params[:size] ? params[:size] : "all sizes" %>
+				<%= fa_icon 'caret-down' %>
+			</a>
+			<ul class="dropdown-menu" aria-labelledby="size-trigger">
+				<% @sizes.each do |size| %>
+					<li><%= link_to size, assign_property_path(@property, size: size, condition: params[:condition], category: params[:category], color: params[:color]) %></li>
+				<% end %>
+				<li><%= link_to "all sizes", assign_property_path(@property, size: nil, condition: params[:condition], category: params[:category], color: params[:color]) %>
+			</ul>
+		</div>
+	</div>
+
 	<table class="pure-table">
 		<thead>
 			<tr>

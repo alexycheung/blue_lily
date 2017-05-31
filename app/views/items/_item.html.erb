@@ -1,5 +1,5 @@
 <tr>
-	<td>
+	<td class="nowrap">
 		<%= link_to zoom_path(item), remote: true do %>
 			<%= filepicker_image_tag item.photo, fit: 'crop', w: 40, h: 40 %>
 		<% end %>
@@ -11,7 +11,7 @@
 	<td><%= item.color %></td>
 	<td><%= item.category.name %></td>
 	<td><%= item.condition %></td>
-	<td>
+	<td class="nowrap">
 		<%= link_to reservations_path(item), class: "pure-button" do %>
 			<%= fa_icon "calendar" %>
 		<% end %>

@@ -15,12 +15,8 @@ form {
 				margin-bottom: 0.5em;
 			}
 
-			select {
-				width: 187px;
-			}
-
-			textarea {
-				width: 187px;
+			select, input, textarea {
+				width: 200px;
 			}
 		}
 	}
@@ -35,4 +31,26 @@ form {
 
 .hide {
 	display: none;
+}
+
+
+/* tables */
+
+table {
+	width: 100%;
+
+	tbody {
+		tr {
+			td {
+				a {
+					text-decoration: underline;
+				}
+
+				&.nowrap {
+					width:1%;
+    			white-space:nowrap;
+				}
+			}
+		}
+	}
 }

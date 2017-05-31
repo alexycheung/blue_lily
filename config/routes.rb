@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/properties/:id/assign', to: 'properties#assign', as: 'assign_property'
   get '/properties/retrieve', to: 'properties#retrieve', as: 'retrieve_property'
 
-  resources :items
+  resources :items, except: [:show]
   get '/items/:id/zoom', to: 'items#zoom', as: 'zoom'
   post '/items/:id/reserve', to: 'items#reserve', as: 'reserve'
   post '/items/:id/cancel_reservation', to: 'items#cancel_reservation', as: 'cancel_reservation'

@@ -54,18 +54,37 @@ class PropertiesController < ApplicationController
 	def assign
 		@property = Property.find(params[:id])
 		@items = []
+		@colors = []
+		@conditions = []
+		@categories = []
+		@sizes = []
+
 		Item.all.each do |item|
 			if item.reservations.where(property_id: @property.id).any? || !item.reserved?(@property.start_date, @property.end_date)
-				@items << item
+				if [nil, item.color].include?(params[:color]) &&
+					 [nil, item.condition].include?(params[:condition]) &&
+					 [nil, item.category.name].include?(params[:category]) &&
+					 [nil, item.size].include?(params[:size])
+					@items << item
+				end
+				@colors << item.color
+				@conditions << item.condition
+				@categories << item.category.name
+				@sizes << item.size
 			end
 		end
+
+		@colors = @colors.uniq
+		@conditions = @conditions.uniq
+		@categories = @categories.uniq
+		@sizes = @sizes.uniq
 	end
 
 	def retrieve
 		@property = Property.new(property_params)
 		@response = ZillowService.get_property(property_params[:zillow_url])
 		if @response
-			flash[:notice] = "Retrieved property"
+			flash.now[:notice] = "Retrieved property"
 		else
 			flash.now[:alert] = "Failed to retrieve property"
 		end

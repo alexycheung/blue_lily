@@ -1,5 +1,5 @@
 <tr>
-	<td>
+	<td class="nowrap">
 		<%= fa_icon "circle", class: "#{status(property)} status" %>
 	</td>
 	<td>
@@ -14,7 +14,7 @@
 	<td><%= property.user.name %></td>
 	<td><%= property.start_date.strftime("%D") %></td>
 	<td><%= property.end_date.strftime("%D") %></td>
-	<td>
+	<td class="nowrap">
 		<%= link_to assign_property_path(property), class: "pure-button" do %>
 			<%= fa_icon "bars" %>
 		<% end %>
