@@ -1,0 +1,18 @@
+if($(".flash")[0]) {
+	$(".flash").remove();
+}
+
+<% if @response %>
+	$("#retrieve_property").remove();
+	$("#new_property").show();
+	$("#new_property #property_zillow_url").val("<%= @response[:zillow_url] %>");
+	$("#new_property #property_address").val("<%= @response[:address] %>");
+	$("#new_property #property_city").val("<%= @response[:city] %>");
+	$("#new_property #property_state").val("<%= @response[:state] %>");
+	$("#new_property #property_zip").val("<%= @response[:zip] %>");
+	$("#new_property #property_bedrooms").val("<%= @response[:bedrooms] %>");
+	$("#new_property #property_bathrooms").val("<%= @response[:bathrooms] %>");
+	$("#new_property #property_sqft").val("<%= @response[:sqft] %>");
+<% end %>
+
+$("#header").after("<%= j render 'layouts/flash' %>");

@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
 
-  resources :properties
-  get '/properties/:id/assign', to: "properties#assign", as: 'assign'
+  resources :properties, except: [:show]
+  get '/properties/:id/assign', to: 'properties#assign', as: 'assign_property'
+  get '/properties/retrieve', to: 'properties#retrieve', as: 'retrieve_property'
 
   resources :items
   get '/items/:id/zoom', to: 'items#zoom', as: 'zoom'

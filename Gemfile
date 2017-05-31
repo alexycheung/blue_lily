@@ -34,6 +34,8 @@ gem 'filestack-rails', require: 'filepicker-rails'
 gem 'dotenv-rails', :groups => [:development, :test]
 # Style SVG document. Read more: https://github.com/jamesmartin/inline_svg
 gem 'inline_svg'
+# HTTP requests. Read more: https://github.com/jnunemaker/httparty
+gem 'httparty'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

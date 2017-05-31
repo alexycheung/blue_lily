@@ -40,7 +40,7 @@ class UsersController < ApplicationController
 		if @user.destroy
 			flash[:notice] = "Deleted user"
 		else
-			flash[:alert] = @user.errors.full_messages.first
+			flash.now[:alert] = @user.errors.full_messages.first
 		end
 		redirect_to users_path
 	end

@@ -46,7 +46,7 @@ class PropertiesController < ApplicationController
 		if @property.destroy
 			flash[:notice] = "Deleted property"
 		else
-			flash[:alert] = @property.errors.full_messages.first
+			flash.now[:alert] = @property.errors.full_messages.first
 		end
 		redirect_to properties_path
 	end
@@ -58,6 +58,19 @@ class PropertiesController < ApplicationController
 			if item.reservations.where(property_id: @property.id).any? || !item.reserved?(@property.start_date, @property.end_date)
 				@items << item
 			end
+		end
+	end
+
+	def retrieve
+		@property = Property.new(property_params)
+		@response = ZillowService.get_property(property_params[:zillow_url])
+		if @response
+			flash[:notice] = "Retrieved property"
+		else
+			flash.now[:alert] = "Failed to retrieve property"
+		end
+		respond_to do |format|
+			format.js
 		end
 	end
 

@@ -71,6 +71,8 @@ GEM
       railties (>= 3.2, < 5.1)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    httparty (0.14.0)
+      multi_xml (>= 0.5.2)
     i18n (0.8.1)
     inline_svg (1.0.0)
       activesupport (>= 3.0)
@@ -98,6 +100,7 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.10.2)
     multi_json (1.12.1)
+    multi_xml (0.6.0)
     nio4r (2.0.0)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
@@ -188,6 +191,7 @@ DEPENDENCIES
   dotenv-rails
   filestack-rails
   font-awesome-rails
+  httparty
   inline_svg
   jbuilder (~> 2.5)
   jquery-rails

@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
 		if @item.destroy
 			flash[:notice] = "Deleted item"
 		else
-			flash[:alert] = @item.errors.full_messages.first
+			flash.now[:alert] = @item.errors.full_messages.first
 		end
 		redirect_to items_path
 	end
