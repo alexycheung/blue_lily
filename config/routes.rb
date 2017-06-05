@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   post '/items/:id/reverse_checkout', to: 'items#reverse_checkout', as: 'reverse_checkout'
 
   get '/items/:id/reservations', to: 'reservations#index', as: 'reservations'
+
+  resources :categories
 end

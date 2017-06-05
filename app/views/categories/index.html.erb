@@ -1,0 +1,14 @@
+<div id="categories-index">
+	<%= link_to "Add Category", new_category_path, class: "pure-button pure-button-primary", id: "add-category-button" %>
+	<table class="pure-table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<%= render @categories %>
+		</tbody>
+	</table>
+</div>
