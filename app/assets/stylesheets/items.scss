@@ -9,6 +9,23 @@
 	#add-item-button {
 		margin-bottom: 1em;
 	}
+
+	#filter {
+		float: right;
+		margin-top: 4px;
+
+		.dropdown {
+			display: inline-block;
+
+			.trigger,{
+				cursor: pointer;
+				margin-left: 10px;
+				color: $primary;
+				font-size: 14px;
+				font-weight: 600;
+			}
+		}
+	}
 }
 
 

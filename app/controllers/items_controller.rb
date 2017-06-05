@@ -1,6 +1,28 @@
 class ItemsController < ApplicationController
 	def index
-		@items = Item.by_date
+		@items = []
+		@colors = []
+		@conditions = []
+		@categories = []
+		@sizes = []
+
+		Item.by_date.each do |item|
+			if [nil, item.color].include?(params[:color]) &&
+				 [nil, item.condition].include?(params[:condition]) &&
+				 [nil, item.category.name].include?(params[:category]) &&
+				 [nil, item.size].include?(params[:size])
+				@items << item
+			end
+			@colors << item.color
+			@conditions << item.condition
+			@categories << item.category.name
+			@sizes << item.size
+		end
+
+		@colors = @colors.uniq
+		@conditions = @conditions.uniq
+		@categories = @categories.uniq
+		@sizes = @sizes.uniq
 	end
 
 	def new

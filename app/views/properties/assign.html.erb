@@ -5,7 +5,7 @@
 
 	<div id="filter">
 		<div class="dropdown">
-			<a id="color-trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<a id="color-trigger" class="trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				<%= params[:color] ? params[:color] : "all colors" %>
 				<%= fa_icon 'caret-down' %>
 			</a>
@@ -18,7 +18,7 @@
 		</div>
 
 		<div class="dropdown">
-			<a id="condition-trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<a id="condition-trigger" class="trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				<%= params[:condition] ? params[:condition] : "all conditions" %>
 				<%= fa_icon 'caret-down' %>
 			</a>
@@ -31,7 +31,7 @@
 		</div>
 
 		<div class="dropdown">
-			<a id="category-trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<a id="category-trigger" class="trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				<%= params[:category] ? params[:category] : "all categories" %>
 				<%= fa_icon 'caret-down' %>
 			</a>
@@ -44,7 +44,7 @@
 		</div>
 
 		<div class="dropdown">
-			<a id="size-trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<a id="size-trigger" class="trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				<%= params[:size] ? params[:size] : "all sizes" %>
 				<%= fa_icon 'caret-down' %>
 			</a>

@@ -44,10 +44,7 @@
 		.dropdown {
 			display: inline-block;
 
-			#color-trigger,
-			#condition-trigger,
-			#category-trigger,
-			#size-trigger,{
+			.trigger,{
 				cursor: pointer;
 				margin-left: 10px;
 				color: $primary;
