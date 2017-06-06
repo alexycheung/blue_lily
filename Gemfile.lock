@@ -40,6 +40,7 @@ GEM
       tzinfo (~> 1.1)
     american_date (1.1.1)
     arel (7.1.4)
+    barby (0.6.2)
     bcrypt (3.1.11)
     bindex (0.5.0)
     builder (3.2.3)
@@ -187,6 +188,7 @@ PLATFORMS
 
 DEPENDENCIES
   american_date
+  barby
   byebug
   coffee-rails (~> 4.2)
   devise

@@ -25,4 +25,9 @@ module ItemsHelper
 		end
 		return "available"
 	end
+
+	# Create barcode based on item `id`
+	def item_barcode(item)
+		return Barby::Code128.new(@item.id).to_svg.html_safe
+	end
 end

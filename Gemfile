@@ -38,6 +38,8 @@ gem 'inline_svg'
 gem 'httparty'
 # Time difference. Read more: https://github.com/tmlee/time_difference
 gem 'time_difference'
+# Barcode generator. Read more: https://github.com/toretore/barby
+gem 'barby'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
