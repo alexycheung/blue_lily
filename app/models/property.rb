@@ -6,9 +6,8 @@ class Property < ApplicationRecord
 	validates :bedrooms, presence: true, numericality: true
 	validates :bathrooms, presence: true, numericality: true
 	validates :sqft, presence: true, numericality: true
-	validates :user_id, presence: true
 
-	belongs_to :user
+	belongs_to :user, optional: true
 	has_many :reservations
 	has_many :items, through: :reservations
 

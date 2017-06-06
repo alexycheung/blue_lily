@@ -8,8 +8,8 @@ class ZillowService
 				city = html.match(/<span itemprop="addressLocality">([^*]+?)</)[1].strip()
 				state = html.match(/<span itemprop="addressRegion">([^*]+?)</)[1].strip()
 				zip = html.match(/<span itemprop="postalCode"[^*]+?">([^*]+?)</)[1].strip()
-				bedrooms = html.match(/<span class="addr_bbs">((?<!\.)\d+(?!\.)) beds</)[1].strip().to_i
-				bathrooms = html.match(/<span class="addr_bbs">((?<!\.)\d+(?!\.)) baths</)[1].strip().to_i
+				bedrooms = html.match(/addr_bbs">((?<!\.)\d+(?!\.)) bed</)[1].strip().to_i
+				bathrooms = html.match(/addr_bbs">((?<!\.)\d+(?!\.)) bath</)[1].strip().to_i
 				sqft = html.match(/id="sqft"[^*]+?value="([^*]+?)"/)[1].strip().gsub(",","").to_i
 
 				property = {

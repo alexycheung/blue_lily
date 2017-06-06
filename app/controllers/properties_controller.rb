@@ -82,15 +82,33 @@ class PropertiesController < ApplicationController
 
 	def retrieve
 		@property = Property.new(property_params)
-		@response = ZillowService.get_property(property_params[:zillow_url])
-		if @response
-			flash.now[:notice] = "Retrieved property"
+		response = ZillowService.get_property(property_params[:zillow_url])
+		if response
+			@property = Property.new(
+				zillow_url: response[:zillow_url],
+				address: response[:address],
+				city: response[:city],
+				state: response[:state],
+				zip: response[:zip],
+				bedrooms: response[:bedrooms],
+				bathrooms: response[:bathrooms],
+				sqft: response[:sqft],
+			)
+			if @property.save
+				flash[:notice] = "Retrieved property"
+				redirect_to edit_property_path(@property)
+			else
+				flash.now[:alert] = @property.errors.full_messages.first
+				render :zillow
+			end
 		else
 			flash.now[:alert] = "Failed to retrieve property"
+			render :zillow
 		end
-		respond_to do |format|
-			format.js
-		end
+	end
+
+	def zillow
+		@property = Property.new
 	end
 
 	private

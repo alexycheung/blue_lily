@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :properties, except: [:show]
   get '/properties/:id/assign', to: 'properties#assign', as: 'assign_property'
   get '/properties/retrieve', to: 'properties#retrieve', as: 'retrieve_property'
+  get '/properties/zillow', to: 'properties#zillow', as: 'zillow_property'
 
   resources :items, except: [:show]
   get '/items/:id/zoom', to: 'items#zoom', as: 'zoom'
