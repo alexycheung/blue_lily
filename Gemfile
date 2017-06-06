@@ -36,6 +36,8 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'inline_svg'
 # HTTP requests. Read more: https://github.com/jnunemaker/httparty
 gem 'httparty'
+# Time difference. Read more: https://github.com/tmlee/time_difference
+gem 'time_difference'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

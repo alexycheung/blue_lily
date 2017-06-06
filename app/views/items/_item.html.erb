@@ -11,6 +11,7 @@
 	<td><%= item.color %></td>
 	<td><%= item.category.name %></td>
 	<td><%= item.condition %></td>
+	<td><%= item_status(item) %></td>
 	<td class="nowrap">
 		<%= link_to reservations_path(item), class: "pure-button" do %>
 			<%= fa_icon "calendar" %>
