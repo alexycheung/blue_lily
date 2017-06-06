@@ -111,6 +111,11 @@ class PropertiesController < ApplicationController
 		@property = Property.new
 	end
 
+	def barcodes
+		@property = Property.find(params[:id])
+		@items = @property.items
+	end
+
 	private
 
 		def property_params

@@ -15,8 +15,13 @@
 	<td><%= property.start_date.strftime("%D") if property.start_date %></td>
 	<td><%= property.end_date.strftime("%D") if property.end_date %></td>
 	<td class="nowrap">
-		<%= link_to assign_property_path(property), class: "pure-button" do %>
-			<%= fa_icon "bars" %>
+		<% if property.start_date && property.end_date %>
+			<%= link_to assign_property_path(property), class: "pure-button" do %>
+				<%= fa_icon "bars" %>
+			<% end %>
+			<%= link_to barcodes_property_path(property), "target" => "_blank", class: "pure-button" do %>
+				<%= fa_icon "print" %>
+			<% end %>
 		<% end %>
 		<%= link_to edit_property_path(property), class: "pure-button" do %>
 			<%= fa_icon "pencil" %>
