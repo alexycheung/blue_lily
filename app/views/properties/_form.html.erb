@@ -1,4 +1,4 @@
-<%= simple_form_for @property, url: { action: :create, show_new_property_form: true }, html: { class: "pure-form pure-form-stacked" } do |f| %>
+<%= simple_form_for @property, html: { class: "pure-form pure-form-stacked" } do |f| %>
   <div class="form-inputs">
     <%= f.input :zillow_url, error: false, label: "Zillow URL", autofocus: true %>
     <%= f.input :address, error: false %>
