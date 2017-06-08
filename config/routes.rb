@@ -14,12 +14,12 @@ Rails.application.routes.draw do
   get '/items/:id/zoom', to: 'items#zoom', as: 'zoom'
   post '/items/:id/reserve', to: 'items#reserve', as: 'reserve'
   post '/items/:id/cancel_reservation', to: 'items#cancel_reservation', as: 'cancel_reservation'
-  post '/items/:id/checkin', to: 'items#checkin', as: 'checkin'
-  post '/items/:id/reverse_checkin', to: 'items#reverse_checkin', as: 'reverse_checkin'
-  post '/items/:id/checkout', to: 'items#checkout', as: 'checkout'
-  post '/items/:id/reverse_checkout', to: 'items#reverse_checkout', as: 'reverse_checkout'
-
   get '/items/:id/reservations', to: 'reservations#index', as: 'reservations'
+  get '/items/manage_checkin', to: 'items#manage_checkin', as: 'manage_checkin_items'
+  post '/items/checkin', to: 'items#checkin', as: 'checkin_item'
+  get '/items/manage_checkout', to: 'items#manage_checkout', as: 'manage_checkout_items'
+  post '/items/checkout', to: 'items#checkout', as: 'checkout_item'
+
 
   resources :categories
 end

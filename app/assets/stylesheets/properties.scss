@@ -14,16 +14,22 @@
 
 /* _property */
 
-.status {
-	font-size: 12px;
-	color: white;
+td {
+	.status {
+		font-size: 12px;
+		color: white;
 
-	&.upcoming {
-		color: #FFA500;
+		&.upcoming {
+			color: #FFA500;
+		}
+
+		&.started {
+			color: $primary;
+		}
 	}
 
-	&.started {
-		color: $primary;
+	&.actions {
+		text-align: right;
 	}
 }
 

@@ -100,48 +100,46 @@ class ItemsController < ApplicationController
 		end
 	end
 
-	def checkout
-		@item = Item.find(params[:id])
-		@property = Property.find(params[:property_id])
-		reservation = Reservation.where(item_id: @item.id, property_id: @property.id).first
-		reservation.checkout = Date.today
-		reservation.save
-		respond_to do |format|
-			format.js
-		end
+	def manage_checkin
 	end
 
-	def reverse_checkout
-		@item = Item.find(params[:id])
-		@property = Property.find(params[:property_id])
-		reservation = Reservation.where(item_id: @item.id, property_id: @property.id).first
-		reservation.checkout = nil
-		reservation.save
-		respond_to do |format|
-			format.js
-		end
+	def manage_checkout
 	end
 
 	def checkin
-		@item = Item.find(params[:id])
-		@property = Property.find(params[:property_id])
-		reservation = Reservation.where(item_id: @item.id, property_id: @property.id).first
-		reservation.checkin = Date.today
-		reservation.save
-		respond_to do |format|
-			format.js
+		@item = Item.find_by_id(params[:item][:id])
+		if !@item
+			flash[:alert] = "Can't find item ##{params[:item][:id]}"
+		elsif @item.reserved_for_property(DateTime.now, DateTime.now)
+			property = @item.reserved_for_property(DateTime.now, DateTime.now)
+			reservation = @item.item_reservation(property)
+			if reservation.update_attributes(checkin: DateTime.now)
+				flash[:notice] = "Checked in #{@item.name} for #{property.address}, #{property.city}, #{property.state}"
+			else
+				flash[:alert] = reservation.errors.full_messages.first
+			end
+		else
+			flash[:alert] = "Can't checkin #{@item.name}"
 		end
+		redirect_to manage_checkin_items_path
 	end
 
-	def reverse_checkin
-		@item = Item.find(params[:id])
-		@property = Property.find(params[:property_id])
-		reservation = Reservation.where(item_id: @item.id, property_id: @property.id).first
-		reservation.checkin = nil
-		reservation.save
-		respond_to do |format|
-			format.js
+	def checkout
+		@item = Item.find_by_id(params[:item][:id])
+		if !@item
+			flash[:alert] = "Can't find item ##{params[:item][:id]}"
+		elsif @item.reserved_for_property(DateTime.now, DateTime.now)
+			property = @item.reserved_for_property(DateTime.now, DateTime.now)
+			reservation = @item.item_reservation(property)
+			if reservation.update_attributes(checkout: DateTime.now)
+				flash[:notice] = "Checked out #{@item.name} for #{property.address}, #{property.city}, #{property.state}"
+			else
+				flash[:alert] = reservation.errors.full_messages.first
+			end
+		else
+			flash[:alert] = "Can't checkout #{@item.name}"
 		end
+		redirect_to manage_checkout_items_path
 	end
 
 	private

@@ -60,7 +60,7 @@ class PropertiesController < ApplicationController
 		@sizes = []
 
 		Item.all.each do |item|
-			if item.reservations.where(property_id: @property.id).any? || !item.reserved?(@property.start_date, @property.end_date)
+			if item.reservations.where(property_id: @property.id).any? || !item.reserved_for_property(@property.start_date, @property.end_date)
 				if [nil, item.color].include?(params[:color]) &&
 					 [nil, item.condition].include?(params[:condition]) &&
 					 [nil, item.category.name].include?(params[:category]) &&

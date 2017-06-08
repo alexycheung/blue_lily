@@ -14,20 +14,20 @@ class Item < ApplicationRecord
 
 	scope :by_date, -> { order("created_at DESC") }
 
-	# Return true if item is reserved on date
-	def reserved?(start_date, end_date)
+	# Return property if item is reserved on date
+	def reserved_for_property(start_date, end_date)
 		item = self
 		item.reservations.each do |reservation|
 			property = reservation.property
 			if start_date >= property.start_date && start_date <= property.end_date
-				return true
+				return property
 			elsif end_date >= property.start_date && end_date <= property.end_date
-				return true
+				return property
 			elsif start_date <= property.start_date && end_date >= property.end_date
-				return true
+				return property
 			end
 		end
-		return false
+		return nil
 	end
 
 	# Return last reservation
@@ -40,21 +40,21 @@ class Item < ApplicationRecord
 		return last_reservation
 	end
 
-	# Return true if item is checked out under property
-	def checked_out?(property)
+	# Return true if item is reserved for property
+	def is_reserved?(property)
 		item = self
-		if Reservation.where(property_id: property.id, item_id: item.id).where("checkout IS NOT NULL").any?
+		if item.reservations.where(property_id: property.id).any?
 			return true
 		end
 		return false
 	end
 
-	# Return true if item is checked in under property
-	def checked_in?(property)
+	# Return reservation for item / property
+	def item_reservation(property)
 		item = self
-		if Reservation.where(property_id: property.id, item_id: item.id).where("checkin IS NOT NULL").any?
-			return true
+		if item.reservations.where(property_id: property.id).any?
+			return reservation = item.reservations.where(property_id: property.id).first
 		end
-		return false
+		return nil
 	end
 end
