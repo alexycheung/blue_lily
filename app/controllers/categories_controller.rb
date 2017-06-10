@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@categories = Category.by_date
+		@categories = Category.active.by_date
 	end
 
 	def new
@@ -39,7 +39,7 @@ class CategoriesController < ApplicationController
 		@category = Category.find(params[:id])
 		if @category.items.any?
 			flash[:alert] = "Can't delete category that has items"
-		elsif @category.destroy
+		elsif @category.update_attributes(destroyed_at: DateTime.now)
 			flash[:notice] = "Deleted category"
 		else
 			flash.now[:alert] = @category.errors.full_messages.first

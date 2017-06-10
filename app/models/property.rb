@@ -12,6 +12,7 @@ class Property < ApplicationRecord
 	has_many :items, through: :reservations
 
 	scope :by_start_date, -> { order("start_date DESC") }
+	scope :active, -> { where(destroyed_at: nil) }
 
 	# Return true if updated start_date / end_date conflicts with item availability
 	def schedule_conflict?(start_date, end_date)

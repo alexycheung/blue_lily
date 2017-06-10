@@ -13,6 +13,7 @@ class Item < ApplicationRecord
 	has_many :properties, through: :reservations
 
 	scope :by_date, -> { order("created_at DESC") }
+	scope :active, -> { where(destroyed_at: nil) }
 
 	# Return property if item is reserved on date
 	def reserved_for_property(start_date, end_date)

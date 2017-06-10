@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 	end
 
 	def index
-		@users = User.by_date
+		@users = User.active.by_date
 	end
 
 	def edit
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
 	def destroy
 		@user = User.find(params[:id])
-		if @user.destroy
+		if @user.update_attributes(destroyed_at: DateTime.now)
 			flash[:notice] = "Deleted user"
 		else
 			flash.now[:alert] = @user.errors.full_messages.first

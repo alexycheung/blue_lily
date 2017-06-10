@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
 		@categories = []
 		@sizes = []
 
-		Item.by_date.each do |item|
+		Item.active.by_date.each do |item|
 			if [nil, item.color].include?(params[:color]) &&
 				 [nil, item.condition].include?(params[:condition]) &&
 				 [nil, item.category.name].include?(params[:category]) &&
@@ -59,7 +59,7 @@ class ItemsController < ApplicationController
 
 	def destroy
 		@item = Item.find(params[:id])
-		if @item.destroy
+		if @item.update_attributes(destroyed_at: DateTime.now)
 			flash[:notice] = "Deleted item"
 		else
 			flash.now[:alert] = @item.errors.full_messages.first

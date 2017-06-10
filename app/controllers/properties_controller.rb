@@ -2,7 +2,7 @@ class PropertiesController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@properties = Property.by_start_date
+		@properties = Property.active.by_start_date
 	end
 
 	def new
@@ -43,7 +43,7 @@ class PropertiesController < ApplicationController
 
 	def destroy
 		@property = Property.find(params[:id])
-		if @property.destroy
+		if @property.update_attributes(destroyed_at: DateTime.now)
 			flash[:notice] = "Deleted property"
 		else
 			flash.now[:alert] = @property.errors.full_messages.first
@@ -59,7 +59,7 @@ class PropertiesController < ApplicationController
 		@categories = []
 		@sizes = []
 
-		Item.all.each do |item|
+		Item.active.each do |item|
 			if item.reservations.where(property_id: @property.id).any? || !item.reserved_for_property(@property.start_date, @property.end_date)
 				if [nil, item.color].include?(params[:color]) &&
 					 [nil, item.condition].include?(params[:condition]) &&

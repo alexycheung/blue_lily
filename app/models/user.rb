@@ -12,5 +12,6 @@ class User < ApplicationRecord
 
   scope :by_date, -> { order("created_at DESC") }
   scope :agents, -> { where(role: "agent") }
+  scope :active, -> { where(destroyed_at: nil) }
 end
 
