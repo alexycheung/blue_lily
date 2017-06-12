@@ -12,7 +12,8 @@ class PropertiesController < ApplicationController
 	def create
 		@property = Property.new(property_params)
 		if @property.save
-			flash[:notice] = "Created property"
+			track_activity @property
+			flash[:notice] = "Created property #{@property.address}, #{@property.city}, #{@property.state}, #{@property.zip}"
 			redirect_to properties_path
 		else
 			flash.now[:alert] = @property.errors.full_messages.first
@@ -33,7 +34,8 @@ class PropertiesController < ApplicationController
 			flash.now[:alert] = "Property dates conflict with item availability"
 			render "edit"
 		elsif @property.update_attributes(property_params)
-			flash[:notice] = "Updated property"
+			track_activity @property
+			flash[:notice] = "Updated property #{@property.address}, #{@property.city}, #{@property.state}, #{@property.zip}"
 			redirect_to properties_path
 		else
 			flash.now[:alert] = @property.errors.full_messages.first
@@ -44,7 +46,8 @@ class PropertiesController < ApplicationController
 	def destroy
 		@property = Property.find(params[:id])
 		if @property.update_attributes(destroyed_at: DateTime.now)
-			flash[:notice] = "Deleted property"
+			track_activity @property
+			flash[:notice] = "Deleted property #{@property.address}, #{@property.city}, #{@property.state}, #{@property.zip}"
 		else
 			flash.now[:alert] = @property.errors.full_messages.first
 		end
@@ -95,7 +98,8 @@ class PropertiesController < ApplicationController
 				sqft: response[:sqft],
 			)
 			if @property.save
-				flash[:notice] = "Retrieved property"
+				track_activity @property
+				flash[:notice] = "Retrieved property #{@property.address}, #{@property.city}, #{@property.state}, #{@property.zip}"
 				redirect_to edit_property_path(@property)
 			else
 				flash.now[:alert] = @property.errors.full_messages.first

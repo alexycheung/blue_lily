@@ -12,14 +12,14 @@ Rails.application.routes.draw do
 
   resources :items, except: [:show]
   get '/items/:id/zoom', to: 'items#zoom', as: 'zoom'
-  post '/items/:id/reserve', to: 'items#reserve', as: 'reserve'
-  post '/items/:id/cancel_reservation', to: 'items#cancel_reservation', as: 'cancel_reservation'
-  get '/items/:id/reservations', to: 'reservations#index', as: 'reservations'
-  get '/items/manage_checkin', to: 'items#manage_checkin', as: 'manage_checkin_items'
-  post '/items/checkin', to: 'items#checkin', as: 'checkin_item'
-  get '/items/manage_checkout', to: 'items#manage_checkout', as: 'manage_checkout_items'
-  post '/items/checkout', to: 'items#checkout', as: 'checkout_item'
 
+  resources :reservations, only: [:create, :index, :destroy]
+  get '/reservations/manage_checkin', to: 'reservations#manage_checkin', as: 'manage_checkin_reservations'
+  post '/reservations/checkin', to: 'reservations#checkin', as: 'checkin_reservations'
+  get '/reservations/manage_checkout', to: 'reservations#manage_checkout', as: 'manage_checkout_reservations'
+  post '/reservations/checkout', to: 'reservations#checkout', as: 'checkout_reservations'
 
   resources :categories
+
+  resources :activities
 end

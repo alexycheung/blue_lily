@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :phone, presence: true
   validates :company, presence: true
 
+  has_many :activities
   has_many :properties
 
   scope :by_date, -> { order("created_at DESC") }

@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170610021517) do
+ActiveRecord::Schema.define(version: 20170612023427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "action"
+    t.integer  "trackable_id"
+    t.string   "trackable_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["trackable_id"], name: "index_activities_on_trackable_id", using: :btree
+    t.index ["user_id"], name: "index_activities_on_user_id", using: :btree
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -60,11 +71,11 @@ ActiveRecord::Schema.define(version: 20170610021517) do
   create_table "reservations", force: :cascade do |t|
     t.integer  "item_id"
     t.integer  "property_id"
-    t.date     "reserved_at"
     t.date     "checkin"
     t.date     "checkout"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.datetime "destroyed_at"
     t.index ["item_id"], name: "index_reservations_on_item_id", using: :btree
     t.index ["property_id"], name: "index_reservations_on_property_id", using: :btree
   end

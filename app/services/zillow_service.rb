@@ -4,12 +4,12 @@ class ZillowService
 			response = HTTParty.get(zillow_url)
 			if response.code == 200
 				html = response.body
-				address = html.match(/<span itemprop="streetAddress">([^*]+?)</)[1].strip()
+				address = html.match(/"streetAddress">([^*]+?)</)[1].strip()
 				city = html.match(/<span itemprop="addressLocality">([^*]+?)</)[1].strip()
 				state = html.match(/<span itemprop="addressRegion">([^*]+?)</)[1].strip()
 				zip = html.match(/<span itemprop="postalCode"[^*]+?">([^*]+?)</)[1].strip()
 				bedrooms = html.match(/addr_bbs">(\d{1,10}) bed/)[1].strip().to_i
-				bathrooms = bedrooms = html.match(/addr_bbs">(\d{1,10}) bath/)[1].strip().to_i
+				bathrooms = html.match(/addr_bbs">(\d{1,10}) bath/)[1].strip().to_i
 				sqft = html.match(/id="sqft"[^*]+?value="([^*]+?)"/)[1].strip().gsub(",","").to_i
 
 				property = {
