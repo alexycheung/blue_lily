@@ -4,7 +4,7 @@
     <%= f.input :phone, error: false %>
     <%= f.input :company, error: false %>
     <%= f.input :email, required: true, error: false %>
-    <%= f.input :role, required: true, error: false, as: :select, collection: ["admin", "agent"] %>
+    <%= f.input :role, required: true, error: false, as: :select, collection: ["super admin", "admin", "agent", "mover"] if current_user.is_super_admin? %>
     <%= f.input :password, required: true, error: false unless User.find_by_id(@user.id) %>
   </div>
 

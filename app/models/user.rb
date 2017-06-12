@@ -14,5 +14,29 @@ class User < ApplicationRecord
   scope :by_date, -> { order("created_at DESC") }
   scope :agents, -> { where(role: "agent") }
   scope :active, -> { where(destroyed_at: nil) }
+
+  def is_super_admin?
+    user = self
+    return true if user.role == "super admin"
+    return false
+  end
+
+  def is_admin?
+    user = self
+    return true if user.role == "admin"
+    return false
+  end
+
+  def is_agent?
+    user = self
+    return true if user.role == "agent"
+    return false
+  end
+
+  def is_mover?
+    user = self
+    return true if user.role == "mover"
+    return false
+  end
 end
 

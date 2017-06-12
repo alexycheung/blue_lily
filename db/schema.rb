@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612023427) do
+ActiveRecord::Schema.define(version: 20170612031958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170612023427) do
     t.string   "trackable_type"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.datetime "destroyed_at"
     t.index ["trackable_id"], name: "index_activities_on_trackable_id", using: :btree
     t.index ["user_id"], name: "index_activities_on_user_id", using: :btree
   end

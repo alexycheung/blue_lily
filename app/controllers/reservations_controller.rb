@@ -1,4 +1,7 @@
 class ReservationsController < ApplicationController
+	before_action :authenticate_user!
+	before_action :admin_user
+
 	def index
 		@item = Item.find(params[:item_id])
 		@reservations = @item.reservations.by_checkout

@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
 	before_action :authenticate_user!
+	before_action :admin_user
 
 	def index
 		@categories = Category.active.by_date

@@ -1,5 +1,6 @@
 class PropertiesController < ApplicationController
 	before_action :authenticate_user!
+	before_action :admin_user
 
 	def index
 		@properties = Property.active.by_start_date

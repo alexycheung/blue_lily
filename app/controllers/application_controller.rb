@@ -8,6 +8,12 @@ class ApplicationController < ActionController::Base
   		current_user.activities.create! action: action, trackable: trackable
   	end
 
+    def admin_user
+      unless current_user && current_user.is_admin? || current_user.is_super_admin?
+        redirect_to '/401'
+      end
+    end
+
   protected
 
 	  def configure_permitted_parameters
