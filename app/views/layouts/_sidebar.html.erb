@@ -1,0 +1,42 @@
+<div id="sidebar">
+	<div class="container">
+		<%= link_to root_path, class: "#{active_path(root_path)}" do %>
+			<label>Properties</label>
+			<span class="count"><%= Property.active.count %></span>
+		<% end %>
+		<%= link_to items_path, class: "#{active_path(items_path)}" do %>
+			<label>Inventory</label>
+			<span class="count"><%= Item.active.count %></span>
+		<% end %>
+		<%= link_to categories_path, class: "#{active_path(categories_path)}" do %>
+			<label>Categories</label>
+			<span class="count"><%= Category.active.count %></span>
+		<% end %>
+		<%= link_to activities_path, class: "#{active_path(activities_path)}" do %>
+			<label>Activity Log</label>
+			<span class="count"><%= Activity.all.count %></span>
+		<% end %>
+		<%= link_to users_path, class: "#{active_path(users_path)}" do %>
+			<label>Users</label>
+			<span class="count"><%= User.active.count %></span>
+		<% end %>
+	</div>
+	<div class="divider"></div>
+	<div class="container">
+		<%= link_to manage_checkin_reservations_path, class: "#{active_path(manage_checkin_reservations_path)}" do %>
+			<label>Checkin</label>
+		<% end %>
+		<%= link_to manage_checkout_reservations_path, class: "#{active_path(manage_checkout_reservations_path)}" do %>
+			<label>Checkout</label>
+		<% end %>
+	</div>
+	<div class="divider"></div>
+	<div class="container">
+		<%= link_to "" do %>
+			<label>Settings</label>
+		<% end %>
+		<%= link_to destroy_user_session_path, method: :delete do %>
+			<label>Sign out</label>
+		<% end %>
+	</div>
+</div>

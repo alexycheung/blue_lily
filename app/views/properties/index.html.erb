@@ -1,5 +1,7 @@
-<div id="properties-index">
-	<%= link_to "Add Property", zillow_property_path, class: "pure-button pure-button-primary", id: "add-property-button" %>
+<div class="page-wrapper">
+	<%= link_to zillow_property_path, class: "pure-button pure-button-primary medium round", id: "add-property-button" do %>
+		<%= fa_icon 'home', class: 'left-icon' %> Add Property
+	<% end %>
 	<table class="pure-table">
 		<thead>
 			<tr>

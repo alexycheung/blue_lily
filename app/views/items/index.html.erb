@@ -1,5 +1,7 @@
-<div id="items-index">
-	<%= link_to "Add Item", new_item_path, class: "pure-button pure-button-primary", id: "add-item-button" %>
+<div class="page-wrapper">
+	<%= link_to new_item_path, class: "pure-button pure-button-primary medium round", id: "add-item-button" do %>
+		<%= fa_icon 'shopping-cart', class: 'left-icon' %> Add Item
+	<% end %>
 
 	<div id="filter">
 		<div class="dropdown">

@@ -1,10 +1,10 @@
-<div class="items-manage-checkin">
+<div class="page-wrapper">
 	<%= simple_form_for :item, url: checkin_reservations_path, method: :post, html: { class: "pure-form pure-form-stacked", id: "checkin-item" } do |f| %>
 		<div class="form-inputs">
 			<%= f.input :item_id, autofocus: true, label: "Item ID" %>
 		</div>
 		<div class="form-actions">
-			<%= f.button :submit, "Checkin", class: "pure-button pure-button-primary" %>
+			<%= f.button :submit, "Checkin", class: "pure-button pure-button-primary large round" %>
 		</div>
 	<% end %>
 </div>

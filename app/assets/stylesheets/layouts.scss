@@ -4,7 +4,9 @@
 /* _flash */
 
 .flash {
-	padding: 10px 1em;
+	padding: 10px 20px;
+	font-size: 12px;
+	font-weight: 500;
 
 	&.alert {
 		background: $error;
@@ -15,4 +17,65 @@
 		background: $primary;
 		color: white;
 	}
+}
+
+
+/* _sidebar */
+
+#sidebar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 200px;
+	height: 100%;
+	background: #282C39;
+
+	.container {
+		padding: 10px;
+
+		a {
+			@include border-radius(2px);
+			overflow: auto;
+			padding: 4px 10px;
+			display: block;
+
+			label, .count {
+				font-weight: 500;
+				font-size: 11px;
+				color: #697788;
+				cursor: pointer;
+			}
+
+			label {
+				float: left;
+			}
+
+			.count {
+				float: right;
+			}
+		}
+
+		a.active {
+			background: #1F222F;
+
+			label, .count {
+				color: white;
+			}
+		}
+	}
+
+	.divider {
+		@include calc(width, "100% - 20px");
+		margin: 0 auto;
+		background: #1F222F;
+		height: 1px;
+	}
+}
+
+
+/* application */
+
+#yield-container {
+	@include calc(width, "100% - 200px");
+	margin-left: 200px;
 }

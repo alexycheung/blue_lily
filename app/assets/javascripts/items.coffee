@@ -1,6 +1,6 @@
 # save filepicker photo to db
 @onPhotoUpload = (event) ->
-	 $(".upload-photo").html "<img src='"+event.fpfile.url+"/convert?fit=crop&h=187&w=187'>"
+	 $(".upload-photo").html "<img src='"+event.fpfile.url+"/convert?fit=crop&h=200&w=200'>"
 
 $(document).ready ->
 	$('html').on 'click', '#close-overlay svg', ->

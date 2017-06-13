@@ -1,5 +1,7 @@
-<div id="users-index">
-	<%= link_to "Add User", new_user_path, class: "pure-button pure-button-primary", id: "add-user-button" %>
+<div class="page-wrapper">
+	<%= link_to new_user_path, class: "pure-button pure-button-primary medium round", id: "add-user-button" do %>
+		<%= fa_icon 'user-plus', class: 'left-icon' %> Add User
+	<% end %>
 	<table class="pure-table">
 		<thead>
 			<tr>

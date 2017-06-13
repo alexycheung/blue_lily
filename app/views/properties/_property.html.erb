@@ -16,17 +16,17 @@
 	<td><%= property.end_date.strftime("%D") if property.end_date %></td>
 	<td class="nowrap actions">
 		<% if property.start_date && property.end_date %>
-			<%= link_to assign_property_path(property), class: "pure-button" do %>
+			<%= link_to assign_property_path(property), class: "pure-button icon-button" do %>
 				<%= fa_icon "bars" %>
 			<% end %>
-			<%= link_to barcodes_property_path(property), "target" => "_blank", class: "pure-button" do %>
+			<%= link_to barcodes_property_path(property), "target" => "_blank", class: "pure-button icon-button" do %>
 				<%= fa_icon "print" %>
 			<% end %>
 		<% end %>
-		<%= link_to edit_property_path(property), class: "pure-button" do %>
+		<%= link_to edit_property_path(property), class: "pure-button icon-button" do %>
 			<%= fa_icon "pencil" %>
 		<% end %>
-		<%= link_to property, method: :delete, data: { confirm: "Sure you want to delete this property? "}, class: "pure-button" do %>
+		<%= link_to property, method: :delete, data: { confirm: "Sure you want to delete this property? "}, class: "pure-button icon-button" do %>
 			<%= fa_icon "trash" %>
 		<% end %>
 	</td>

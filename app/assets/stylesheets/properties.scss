@@ -3,12 +3,8 @@
 
 /* index */
 
-#properties-index {
-	padding: 1em;
-
-	#add-property-button {
-		margin-bottom: 1em;
-	}
+#add-property-button {
+	margin-bottom: 20px;
 }
 
 
@@ -16,7 +12,7 @@
 
 td {
 	.status {
-		font-size: 12px;
+		@include scale(0.7);
 		color: white;
 
 		&.upcoming {
@@ -37,42 +33,36 @@ td {
 /* assign */
 
 #properties-assign {
-	padding: 1em;
-
 	h4 {
 		margin-top: 0;
+		margin-bottom: 20px;
 		display: inline-block;
+		font-size: 12px;
 	}
 
 	#filter {
 		float: right;
+		margin-top: -2px;
 
 		.dropdown {
 			display: inline-block;
 
 			.trigger,{
 				cursor: pointer;
-				margin-left: 10px;
+				margin-left: 15px;
 				color: $primary;
-				font-size: 14px;
-				font-weight: 600;
+				font-size: 12px;
+				font-weight: 500;
 			}
 		}
-	}
 
-	table {
-		tbody {
-			tr {
-				td {
-					.reservations-index-link {
-						color: rgba(0,0,0,.8);
-					}
-				}
+		.dropdown-menu {
+			a {
+				font-size: 12px;
 			}
 		}
 	}
 }
-
 
 /* barcodes */
 

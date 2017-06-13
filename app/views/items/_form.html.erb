@@ -1,6 +1,9 @@
 <%= simple_form_for @item, html: { class: "pure-form pure-form-stacked" } do |f| %>
   <div class="form-inputs">
-    <%= f.filepicker_field :photo, button_text: item_photo(@item), button_class: "upload-photo pure-button", onchange: "onPhotoUpload(event)" %>
+    <div class="input">
+      <%= label_tag :photo %>
+      <%= f.filepicker_field :photo, button_text: item_photo(@item), button_class: "upload-photo pure-button subtle-button", onchange: "onPhotoUpload(event)" %>
+    </div>
     <%= f.input :name, error: false, autofocus: true %>
     <%= f.input :color, error: false %>
     <%= f.input :description, error: false %>
@@ -13,6 +16,6 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Save", class: "pure-button pure-button-primary" %>
+    <%= f.button :submit, "Save", class: "pure-button pure-button-primary large round" %>
   </div>
 <% end %>
