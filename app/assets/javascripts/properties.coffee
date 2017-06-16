@@ -1,3 +1,17 @@
+# show property payment on successful upload
+@onPropertyPaymentUpload = (event) ->
+	$(".upload-payment").html "<img src='"+event.fpfile.url+"/convert?fit=crop&h=200&w=200'>"
+	if $('#view_payment')[0]
+		$('#view_payment')[0].remove()
+	$('.payment-input').prepend('<a target="_blank" class="pure-button" id="view_payment" href="'+event.fpfile.url+'">View</a>')
+
+# show property contract on successful upload
+@onPropertyContractUpload = (event) ->
+	$(".upload-contract").html "<img src='"+event.fpfile.url+"/convert?fit=crop&h=200&w=200'>"
+	if $('#view_contract')[0]
+		$('#view_contract')[0].remove()
+	$('.contract-input').prepend('<a target="_blank" class="pure-button" id="view_contract" href="'+event.fpfile.url+'">View</a>')
+
 $(document).ready ->
 	# Update property end date when start date changes
 	$('#property_start_date').on 'keyup change', ->

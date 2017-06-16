@@ -91,12 +91,12 @@ td {
 
 /* _form */
 
-.payment-input {
+.payment-input, .contract-input {
 	position: relative;
 
-	#view_payment {
+	#view_payment, #view_contract {
 		position: absolute;
 		top: 30px;
-		left: 10px;
+		left: 5px;
 	}
 }

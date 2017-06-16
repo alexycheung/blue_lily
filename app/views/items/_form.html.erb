@@ -2,7 +2,7 @@
   <div class="form-inputs">
     <div class="input">
       <%= label_tag :photo %>
-      <%= f.filepicker_field :photo, button_text: item_photo(@item), button_class: "upload-photo pure-button subtle-button", onchange: "onPhotoUpload(event)" %>
+      <%= f.filepicker_field :photo, button_text: item_photo(@item), button_class: "upload-photo pure-button subtle-button", onchange: "onItemPhotoUpload(event)" %>
     </div>
     <%= f.input :name, error: false, autofocus: true %>
     <%= f.input :color, error: false %>

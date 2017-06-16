@@ -19,4 +19,13 @@ module PropertiesHelper
 			return "#{fa_icon 'camera'}"
 		end
 	end
+
+	# Return contract photo or camera icon
+	def property_contract(property)
+		if property.contract
+			return "#{filepicker_image_tag property.contract, fit: 'crop', w: 200, h: 200}"
+		else
+			return "#{fa_icon 'camera'}"
+		end
+	end
 end
