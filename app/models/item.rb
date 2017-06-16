@@ -18,7 +18,7 @@ class Item < ApplicationRecord
 	# Return property if item is reserved on date
 	def reserved_for_property(start_date, end_date)
 		item = self
-		item.reservations.each do |reservation|
+		item.reservations.active.each do |reservation|
 			property = reservation.property
 			if start_date >= property.start_date && start_date <= property.end_date
 				return property
@@ -35,8 +35,8 @@ class Item < ApplicationRecord
 	def last_reservation
 		item = self
 		last_reservation = nil
-		if item.reservations.any?
-			last_reservation = item.reservations.first
+		if item.reservations.active.any?
+			last_reservation = item.reservations.active.first
 		end
 		return last_reservation
 	end
@@ -44,7 +44,7 @@ class Item < ApplicationRecord
 	# Return true if item is reserved for property
 	def is_reserved?(property)
 		item = self
-		if item.reservations.where(property_id: property.id).any?
+		if item.reservations.active.where(property_id: property.id).any?
 			return true
 		end
 		return false
@@ -53,8 +53,8 @@ class Item < ApplicationRecord
 	# Return reservation for item / property
 	def item_reservation(property)
 		item = self
-		if item.reservations.where(property_id: property.id).any?
-			return reservation = item.reservations.where(property_id: property.id).first
+		if item.reservations.active.where(property_id: property.id).any?
+			return reservation = item.reservations.active.where(property_id: property.id).first
 		end
 		return nil
 	end

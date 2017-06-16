@@ -40,7 +40,7 @@ class CategoriesController < ApplicationController
 
 	def destroy
 		@category = Category.find(params[:id])
-		if @category.items.any?
+		if @category.items.active.any?
 			flash[:alert] = "Can't delete category that has items"
 		elsif @category.update_attributes(destroyed_at: DateTime.now)
 			track_activity @category

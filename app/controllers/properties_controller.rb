@@ -118,7 +118,7 @@ class PropertiesController < ApplicationController
 
 	def barcodes
 		@property = Property.find(params[:id])
-		@items = @property.items
+		@items = @property.items.active
 	end
 
 	private
