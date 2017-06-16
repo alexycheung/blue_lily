@@ -10,4 +10,13 @@ module PropertiesHelper
 			return "ended"
 		end
 	end
+
+	# Return payment photo or camera icon
+	def property_payment(property)
+		if property.payment
+			return "#{filepicker_image_tag property.payment, fit: 'crop', w: 200, h: 200}"
+		else
+			return "#{fa_icon 'camera'}"
+		end
+	end
 end

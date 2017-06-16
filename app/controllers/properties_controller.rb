@@ -124,6 +124,6 @@ class PropertiesController < ApplicationController
 	private
 
 		def property_params
-			params.require(:property).permit(:zillow_url, :address, :city, :state, :zip, :start_date, :end_date, :bedrooms, :bathrooms, :sqft, :price, :deposit, :user_id)
+			params.require(:property).permit(:zillow_url, :address, :city, :state, :zip, :start_date, :end_date, :bedrooms, :bathrooms, :sqft, :price, :deposit, :user_id, :payment)
 		end
 end

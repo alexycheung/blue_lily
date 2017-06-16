@@ -13,6 +13,13 @@
     <%= f.input :price, error: false %>
     <%= f.input :deposit, error: false %>
     <%= f.input :user_id, as: :select, collection: User.active.agents, label: "Agent", selected: @property.user ? @property.user.id : nil, include_blank: "", error: false %>
+    <div class="input payment-input">
+      <%= label_tag :payment %>
+      <% if @property.payment %>
+        <%= link_to "View", @property.payment, "target" => "_blank", class: "pure-button", id: "view_payment" %>
+      <% end %>
+      <%= f.filepicker_field :payment, button_text: property_payment(@property), button_class: "upload-photo pure-button subtle-button", onchange: "onPhotoUpload(event)" %>
+    </div>
   </div>
 
   <div class="form-actions">

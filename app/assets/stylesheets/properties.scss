@@ -88,3 +88,15 @@ td {
 		}
 	}
 }
+
+/* _form */
+
+.payment-input {
+	position: relative;
+
+	#view_payment {
+		position: absolute;
+		top: 30px;
+		left: 10px;
+	}
+}
