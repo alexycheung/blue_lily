@@ -1,11 +1,9 @@
-<div class="page-wrapper">
-	<%= simple_form_for @property, url: retrieve_property_path, method: :get, html: { class: "pure-form pure-form-stacked ", id: "retrieve_property" } do |f| %>
-	  <div class="form-inputs">
-	    <%= f.input :zillow_url, autofocus: true, label: "Zillow URL" %>
-	  </div>
-	  <div class="form-actions">
-	    <%= f.button :submit, "Retrieve", class: "pure-button pure-button-primary large round" %>
-	    <%= link_to "Submit Manually", new_property_path, class: "pure-button subtle-button large round" %>
-	  </div>
-	<% end %>
-</div>
+<%= simple_form_for @property, url: retrieve_property_path, method: :get, html: { class: "pure-form pure-form-stacked ", id: "retrieve_property" } do |f| %>
+  <div class="form-inputs">
+    <%= f.input :zillow_url, autofocus: true, label: "Zillow URL" %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, "Retrieve", class: "pure-button pure-button-primary large round" %>
+    <%= link_to "Submit Manually", new_property_path, class: "pure-button subtle-button large round" %>
+  </div>
+<% end %>

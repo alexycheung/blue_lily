@@ -4,9 +4,11 @@
 /* _flash */
 
 .flash {
+	@include border-radius(3px);
 	padding: 10px 20px;
 	font-size: 12px;
 	font-weight: 500;
+	margin-bottom: 20px;
 
 	&.alert {
 		background: $error;
@@ -78,4 +80,5 @@
 #yield-container {
 	@include calc(width, "100% - 200px");
 	margin-left: 200px;
+	padding: 20px;
 }

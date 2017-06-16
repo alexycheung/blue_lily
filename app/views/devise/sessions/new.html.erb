@@ -1,5 +1,5 @@
 <div class="page-wrapper">
-	<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "pure-form pure-form-stacked" }) do |f| %>
+	<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "pure-form pure-form-stacked", id: "signin_form" }) do |f| %>
 	  <div class="form-inputs">
 	    <%= f.input :email, required: false, autofocus: true %>
 	    <%= f.input :password, required: false %>

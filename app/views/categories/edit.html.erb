@@ -1,10 +1,8 @@
-<div class="page-wrapper">
-	<%= simple_form_for @category, html: { class: "pure-form pure-form-stacked" } do |f| %>
-		<div class="form-inputs">
-			<%= f.input :name, error: false, autofocus: true %>
-		</div>
-		<div class="form-actions">
-			<%= f.button :submit, "Save", class: "pure-button pure-button-primary large round" %>
-		</div>
-	<% end %>
-</div>
+<%= simple_form_for @category, html: { class: "pure-form pure-form-stacked" } do |f| %>
+	<div class="form-inputs">
+		<%= f.input :name, error: false, autofocus: true %>
+	</div>
+	<div class="form-actions">
+		<%= f.button :submit, "Save", class: "pure-button pure-button-primary large round" %>
+	</div>
+<% end %>

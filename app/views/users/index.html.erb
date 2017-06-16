@@ -1,19 +1,17 @@
-<div class="page-wrapper">
-	<%= link_to new_user_path, class: "pure-button pure-button-primary medium round", id: "add-user-button" do %>
-		<%= fa_icon 'user-plus', class: 'left-icon' %> Add User
-	<% end %>
-	<table class="pure-table">
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Email</th>
-				<th>Phone</th>
-				<th>Role</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<%= render @users %>
-		</tbody>
-	</table>
-</div>
+<%= link_to new_user_path, class: "pure-button pure-button-primary medium round", id: "add-user-button" do %>
+	<%= fa_icon 'user-plus', class: 'left-icon' %> Add User
+<% end %>
+<table class="pure-table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Phone</th>
+			<th>Role</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render @users %>
+	</tbody>
+</table>

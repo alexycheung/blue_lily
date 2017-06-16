@@ -40,6 +40,8 @@ gem 'httparty'
 gem 'time_difference'
 # Barcode generator. Read more: https://github.com/toretore/barby
 gem 'barby'
+# Pagination. Read more: https://github.com/kaminari/kaminari
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

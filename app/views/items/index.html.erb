@@ -1,77 +1,75 @@
-<div class="page-wrapper">
-	<%= link_to new_item_path, class: "pure-button pure-button-primary medium round", id: "add-item-button" do %>
-		<%= fa_icon 'shopping-cart', class: 'left-icon' %> Add Item
-	<% end %>
+<%= link_to new_item_path, class: "pure-button pure-button-primary medium round", id: "add-item-button" do %>
+	<%= fa_icon 'shopping-cart', class: 'left-icon' %> Add Item
+<% end %>
 
-	<div id="filter">
-		<div class="dropdown">
-			<a id="color-trigger" class="trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				<%= params[:color] ? params[:color] : "all colors" %>
-				<%= fa_icon 'caret-down' %>
-			</a>
-			<ul class="dropdown-menu" aria-labelledby="color-trigger">
-				<% @colors.each do |color| %>
-					<li><%= link_to color, items_path(color: color, condition: params[:condition], category: params[:category], size: params[:size]) %></li>
-				<% end %>
-				<li><%= link_to "all colors", items_path(color: nil, condition: params[:condition], category: params[:category], size: params[:size]) %>
-			</ul>
-		</div>
-
-		<div class="dropdown">
-			<a id="condition-trigger" class="trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				<%= params[:condition] ? params[:condition] : "all conditions" %>
-				<%= fa_icon 'caret-down' %>
-			</a>
-			<ul class="dropdown-menu" aria-labelledby="condition-trigger">
-				<% @conditions.each do |condition| %>
-					<li><%= link_to condition, items_path(condition: condition, color: params[:color], category: params[:category], size: params[:size]) %></li>
-				<% end %>
-				<li><%= link_to "all conditions", items_path(condition: nil, color: params[:color], category: params[:category], size: params[:size]) %>
-			</ul>
-		</div>
-
-		<div class="dropdown">
-			<a id="category-trigger" class="trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				<%= params[:category] ? params[:category] : "all categories" %>
-				<%= fa_icon 'caret-down' %>
-			</a>
-			<ul class="dropdown-menu" aria-labelledby="category-trigger">
-				<% @categories.each do |category| %>
-					<li><%= link_to category, items_path(category: category, condition: params[:condition], color: params[:color], size: params[:size]) %></li>
-				<% end %>
-				<li><%= link_to "all categories", items_path(category: nil, condition: params[:condition], color: params[:color], size: params[:size]) %>
-			</ul>
-		</div>
-
-		<div class="dropdown">
-			<a id="size-trigger" class="trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				<%= params[:size] ? params[:size] : "all sizes" %>
-				<%= fa_icon 'caret-down' %>
-			</a>
-			<ul class="dropdown-menu" aria-labelledby="size-trigger">
-				<% @sizes.each do |size| %>
-					<li><%= link_to size, items_path(size: size, condition: params[:condition], category: params[:category], color: params[:color]) %></li>
-				<% end %>
-				<li><%= link_to "all sizes", items_path(size: nil, condition: params[:condition], category: params[:category], color: params[:color]) %>
-			</ul>
-		</div>
+<div id="filter">
+	<div class="dropdown">
+		<a id="color-trigger" class="trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<%= params[:color] ? params[:color] : "all colors" %>
+			<%= fa_icon 'caret-down' %>
+		</a>
+		<ul class="dropdown-menu" aria-labelledby="color-trigger">
+			<% @colors.each do |color| %>
+				<li><%= link_to color, items_path(color: color, condition: params[:condition], category: params[:category], size: params[:size]) %></li>
+			<% end %>
+			<li><%= link_to "all colors", items_path(color: nil, condition: params[:condition], category: params[:category], size: params[:size]) %>
+		</ul>
 	</div>
 
-	<table class="pure-table">
-		<thead>
-			<tr>
-				<th></th>
-				<th>Name</th>
-				<th>Size</th>
-				<th>Color</th>
-				<th>Category</th>
-				<th>Condition</th>
-				<th>Status</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<%= render @items %>
-		</tbody>
-	</table>
+	<div class="dropdown">
+		<a id="condition-trigger" class="trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<%= params[:condition] ? params[:condition] : "all conditions" %>
+			<%= fa_icon 'caret-down' %>
+		</a>
+		<ul class="dropdown-menu" aria-labelledby="condition-trigger">
+			<% @conditions.each do |condition| %>
+				<li><%= link_to condition, items_path(condition: condition, color: params[:color], category: params[:category], size: params[:size]) %></li>
+			<% end %>
+			<li><%= link_to "all conditions", items_path(condition: nil, color: params[:color], category: params[:category], size: params[:size]) %>
+		</ul>
+	</div>
+
+	<div class="dropdown">
+		<a id="category-trigger" class="trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<%= params[:category] ? params[:category] : "all categories" %>
+			<%= fa_icon 'caret-down' %>
+		</a>
+		<ul class="dropdown-menu" aria-labelledby="category-trigger">
+			<% @categories.each do |category| %>
+				<li><%= link_to category, items_path(category: category, condition: params[:condition], color: params[:color], size: params[:size]) %></li>
+			<% end %>
+			<li><%= link_to "all categories", items_path(category: nil, condition: params[:condition], color: params[:color], size: params[:size]) %>
+		</ul>
+	</div>
+
+	<div class="dropdown">
+		<a id="size-trigger" class="trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<%= params[:size] ? params[:size] : "all sizes" %>
+			<%= fa_icon 'caret-down' %>
+		</a>
+		<ul class="dropdown-menu" aria-labelledby="size-trigger">
+			<% @sizes.each do |size| %>
+				<li><%= link_to size, items_path(size: size, condition: params[:condition], category: params[:category], color: params[:color]) %></li>
+			<% end %>
+			<li><%= link_to "all sizes", items_path(size: nil, condition: params[:condition], category: params[:category], color: params[:color]) %>
+		</ul>
+	</div>
 </div>
+
+<table class="pure-table">
+	<thead>
+		<tr>
+			<th></th>
+			<th>Name</th>
+			<th>Size</th>
+			<th>Color</th>
+			<th>Category</th>
+			<th>Condition</th>
+			<th>Status</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render @items %>
+	</tbody>
+</table>

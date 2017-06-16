@@ -1,16 +1,14 @@
-<div class="page-wrapper">
-	<%= link_to new_category_path, class: "pure-button pure-button-primary medium round", id: "add-category-button" do %>
-		<%= fa_icon 'tag', class: 'left-icon' %> Add Category
-	<% end %>
-	<table class="pure-table">
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<%= render @categories %>
-		</tbody>
-	</table>
-</div>
+<%= link_to new_category_path, class: "pure-button pure-button-primary medium round", id: "add-category-button" do %>
+	<%= fa_icon 'tag', class: 'left-icon' %> Add Category
+<% end %>
+<table class="pure-table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render @categories %>
+	</tbody>
+</table>
