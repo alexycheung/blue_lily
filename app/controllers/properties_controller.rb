@@ -3,7 +3,29 @@ class PropertiesController < ApplicationController
 	before_action :admin_user
 
 	def index
-		@properties = Property.active.by_start_date
+		@properties = []
+		@cities = []
+		@states = []
+		@agents = []
+		@statuses = []
+
+		Property.active.by_start_date.each do |property|
+			if [nil, property.city].include?(params[:city]) &&
+				 [nil, property.state].include?(params[:state]) &&
+				 [nil, property.user ? property.user.name : nil].include?(params[:agent]) &&
+				 [nil, property.status].include?(params[:status])
+				@properties << property
+			end
+			@cities << property.city
+			@states << property.state
+			@agents << property.user.name if property.user
+			@statuses << property.status if property.status
+		end
+
+		@cities = @cities.uniq
+		@states = @states.uniq
+		@agents = @agents.uniq
+		@statuses = @statuses.uniq
 	end
 
 	def new

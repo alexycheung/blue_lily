@@ -13,7 +13,7 @@
 				<% @colors.each do |color| %>
 					<li><%= link_to color, assign_property_path(@property, color: color, condition: params[:condition], category: params[:category], size: params[:size]) %></li>
 				<% end %>
-				<li><%= link_to "all colors", assign_property_path(@property, color: nil, condition: params[:condition], category: params[:category], size: params[:size]) %>
+				<li><%= link_to "all colors", assign_property_path(@property, color: nil, condition: params[:condition], category: params[:category], size: params[:size]) %></li>
 			</ul>
 		</div>
 
@@ -26,7 +26,7 @@
 				<% @conditions.each do |condition| %>
 					<li><%= link_to condition, assign_property_path(@property, condition: condition, color: params[:color], category: params[:category], size: params[:size]) %></li>
 				<% end %>
-				<li><%= link_to "all conditions", assign_property_path(@property, condition: nil, color: params[:color], category: params[:category], size: params[:size]) %>
+				<li><%= link_to "all conditions", assign_property_path(@property, condition: nil, color: params[:color], category: params[:category], size: params[:size]) %></li>
 			</ul>
 		</div>
 
@@ -39,7 +39,7 @@
 				<% @categories.each do |category| %>
 					<li><%= link_to category, assign_property_path(@property, category: category, condition: params[:condition], color: params[:color], size: params[:size]) %></li>
 				<% end %>
-				<li><%= link_to "all categories", assign_property_path(@property, category: nil, condition: params[:condition], color: params[:color], size: params[:size]) %>
+				<li><%= link_to "all categories", assign_property_path(@property, category: nil, condition: params[:condition], color: params[:color], size: params[:size]) %></li>
 			</ul>
 		</div>
 
@@ -52,7 +52,7 @@
 				<% @sizes.each do |size| %>
 					<li><%= link_to size, assign_property_path(@property, size: size, condition: params[:condition], category: params[:category], color: params[:color]) %></li>
 				<% end %>
-				<li><%= link_to "all sizes", assign_property_path(@property, size: nil, condition: params[:condition], category: params[:category], color: params[:color]) %>
+				<li><%= link_to "all sizes", assign_property_path(@property, size: nil, condition: params[:condition], category: params[:category], color: params[:color]) %></li>
 			</ul>
 		</div>
 	</div>

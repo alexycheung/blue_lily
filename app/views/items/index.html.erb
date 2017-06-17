@@ -12,7 +12,7 @@
 			<% @colors.each do |color| %>
 				<li><%= link_to color, items_path(color: color, condition: params[:condition], category: params[:category], size: params[:size]) %></li>
 			<% end %>
-			<li><%= link_to "all colors", items_path(color: nil, condition: params[:condition], category: params[:category], size: params[:size]) %>
+			<li><%= link_to "all colors", items_path(color: nil, condition: params[:condition], category: params[:category], size: params[:size]) %></li>
 		</ul>
 	</div>
 
@@ -25,7 +25,7 @@
 			<% @conditions.each do |condition| %>
 				<li><%= link_to condition, items_path(condition: condition, color: params[:color], category: params[:category], size: params[:size]) %></li>
 			<% end %>
-			<li><%= link_to "all conditions", items_path(condition: nil, color: params[:color], category: params[:category], size: params[:size]) %>
+			<li><%= link_to "all conditions", items_path(condition: nil, color: params[:color], category: params[:category], size: params[:size]) %></li>
 		</ul>
 	</div>
 
@@ -38,7 +38,7 @@
 			<% @categories.each do |category| %>
 				<li><%= link_to category, items_path(category: category, condition: params[:condition], color: params[:color], size: params[:size]) %></li>
 			<% end %>
-			<li><%= link_to "all categories", items_path(category: nil, condition: params[:condition], color: params[:color], size: params[:size]) %>
+			<li><%= link_to "all categories", items_path(category: nil, condition: params[:condition], color: params[:color], size: params[:size]) %></li>
 		</ul>
 	</div>
 
@@ -51,7 +51,7 @@
 			<% @sizes.each do |size| %>
 				<li><%= link_to size, items_path(size: size, condition: params[:condition], category: params[:category], color: params[:color]) %></li>
 			<% end %>
-			<li><%= link_to "all sizes", items_path(size: nil, condition: params[:condition], category: params[:category], color: params[:color]) %>
+			<li><%= link_to "all sizes", items_path(size: nil, condition: params[:condition], category: params[:category], color: params[:color]) %></li>
 		</ul>
 	</div>
 </div>

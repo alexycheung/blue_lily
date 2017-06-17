@@ -1,6 +1,61 @@
 <%= link_to zillow_property_path, class: "pure-button pure-button-primary medium round", id: "add-property-button" do %>
 	<%= fa_icon 'home', class: 'left-icon' %> Add Property
 <% end %>
+
+<div id="filter">
+	<div class="dropdown">
+		<a id="city-trigger" class="trigger" data-toggle="dropdown" aria-haspop="true" aria-expanded="false">
+			<%= params[:city] ? params[:city] : "all cities" %>
+			<%= fa_icon 'caret-down' %>
+		</a>
+		<ul class="dropdown-menu" aria-labelledby="city-trigger">
+			<% @cities.each do |city| %>
+				<li><%= link_to city, properties_path(city: city) %></li>
+			<% end %>
+			<li><%= link_to "all cities", properties_path(city: nil) %></li>
+		</ul>
+	</div>
+
+	<div class="dropdown">
+		<a id="state-trigger" class="trigger" data-toggle="dropdown" aria-haspop="true" aria-expanded="false">
+			<%= params[:state] ? params[:state] : "all states" %>
+			<%= fa_icon 'caret-down' %>
+		</a>
+		<ul class="dropdown-menu" aria-labelledby="state-trigger">
+			<% @states.each do |state| %>
+				<li><%= link_to state, properties_path(state: state) %></li>
+			<% end %>
+			<li><%= link_to "all states", properties_path(state: nil) %></li>
+		</ul>
+	</div>
+
+	<div class="dropdown">
+		<a id="agent-trigger" class="trigger" data-toggle="dropdown" aria-haspop="true" aria-expanded="false">
+			<%= params[:agent] ? params[:agent] : "all agents" %>
+			<%= fa_icon 'caret-down' %>
+		</a>
+		<ul class="dropdown-menu" aria-labelledby="agent-trigger">
+			<% @agents.each do |agent| %>
+				<li><%= link_to agent, properties_path(agent: agent) %></li>
+			<% end %>
+			<li><%= link_to "all agents", properties_path(agent: nil) %></li>
+		</ul>
+	</div>
+
+	<div class="dropdown">
+		<a id="status-trigger" class="trigger" data-toggle="dropdown" aria-haspop="true" aria-expanded="false">
+			<%= params[:status] ? params[:status] : "all statuses" %>
+			<%= fa_icon 'caret-down' %>
+		</a>
+		<ul class="dropdown-menu" aria-labelledby="status-trigger">
+			<% @statuses.each do |status| %>
+				<li><%= link_to status, properties_path(status: status) %></li>
+			<% end %>
+			<li><%= link_to "all statuses", properties_path(status: nil) %></li>
+		</ul>
+	</div>
+</div>
+
 <table class="pure-table">
 	<thead>
 		<tr>
