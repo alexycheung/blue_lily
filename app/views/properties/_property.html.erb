@@ -23,6 +23,9 @@
 				<%= fa_icon "print" %>
 			<% end %>
 		<% end %>
+		<%= link_to property_photos_path(property), class: "pure-button icon-button" do %>
+			<%= fa_icon "camera" %>
+		<% end %>
 		<%= link_to edit_property_path(property), class: "pure-button icon-button" do %>
 			<%= fa_icon "pencil" %>
 		<% end %>

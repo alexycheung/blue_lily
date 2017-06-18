@@ -1,0 +1,7 @@
+<%= simple_form_for [@property, @photo] do |f| %>
+	<%= f.filepicker_field :url, button_text: "#{fa_icon 'camera', class: 'left-icon'} Add Photo", button_class: "pure-button pure-button-primary medium round", onchange: "onPropertyPhotoUpload(event)" %>
+<% end %>
+
+<div id="photos">
+	<%= render @photos %>
+</div>

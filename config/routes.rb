@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
 
-  resources :properties, except: [:show]
+  resources :properties, except: [:show] do
+    resources :photos
+  end
   get '/properties/:id/assign', to: 'properties#assign', as: 'assign_property'
   get '/properties/retrieve', to: 'properties#retrieve', as: 'retrieve_property'
   get '/properties/zillow', to: 'properties#zillow', as: 'zillow_property'

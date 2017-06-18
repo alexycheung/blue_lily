@@ -1,0 +1,7 @@
+<div class="photo">
+	<%= filepicker_image_tag photo.url, fit: "crop", w: 120, h: 120 %>
+	<div class="actions">
+		<%= link_to "View", photo.url, "target" => "_blank", class: "pure-button" %>
+		<%= link_to "Delete", property_photo_path(photo.property, photo), method: :delete, data: { confirm: "Sure you want to delete this photo?" }, class: "pure-button" %>
+	</div>
+</div>

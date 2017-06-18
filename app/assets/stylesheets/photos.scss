@@ -1,0 +1,39 @@
+/* index */
+
+#photos {
+	margin-top: 20px;
+	overflow: auto;
+}
+
+/* _photo */
+
+.photo {
+	position: relative;
+	margin-right: 10px;
+	float: left;
+
+	&:hover {
+		.actions {
+			display: block;
+		}
+	}
+
+	.actions {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		margin-top: 30px;
+		display: none;
+
+		a {
+			width: 80px;
+			display: block;
+			margin: 0 auto;
+
+			&:first-child {
+				margin-bottom: 1px;
+			}
+		}
+	}
+}

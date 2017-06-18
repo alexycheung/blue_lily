@@ -1,5 +1,11 @@
+@import "universal.scss";
+
 /* index */
 
 #activities {
 	margin-bottom: 20px;
+
+	a {
+		color: $primary;
+	}
 }

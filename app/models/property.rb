@@ -10,6 +10,7 @@ class Property < ApplicationRecord
 	belongs_to :user, optional: true
 	has_many :reservations
 	has_many :items, through: :reservations
+	has_many :photos
 
 	scope :by_start_date, -> { order("start_date DESC") }
 	scope :active, -> { where(destroyed_at: nil) }
