@@ -23,5 +23,6 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  resources :activities, only: [:index]
+  resources :versions, only: [:index]
+  post '/versions/:id/undo', to: 'versions#undo', as: 'undo_version'
 end

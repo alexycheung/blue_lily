@@ -5,7 +5,7 @@ users = [
 		phone: "415-555-5555",
 		company: "Blue Lily Staging",
 		email: "vencci@bluelilystaging.com",
-		role: "admin",
+		role: "super admin",
 		password: "password"
 	},
 	{
@@ -13,7 +13,7 @@ users = [
 		phone: "415-413-7210",
 		company: "Blue Lily Staging",
 		email: "cheung.ying.lon@gmail.com",
-		role: "admin",
+		role: "super admin",
 		password: "password"
 	},
 ]

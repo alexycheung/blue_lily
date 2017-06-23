@@ -1,8 +1,0 @@
-<% if activity.action == "checkin" %>
-	checked in item
-<% elsif activity.action == "checkout" %>
-	checked out item
-<% else %>
-	<%= activity.action.sub(/e?$/, "ed") %> reservation for item
-<% end %>
-<b><%= reservation.item.name %></b> at property <b><%= reservation.property.address %>, <%= reservation.property.city %>, <%= reservation.property.state %>, <%= reservation.property.zip %></b>

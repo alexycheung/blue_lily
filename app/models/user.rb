@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_paper_trail ignore: [:updated_at, :current_sign_in_at, :sign_in_count, :last_sign_in_at]
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
@@ -8,12 +10,11 @@ class User < ApplicationRecord
   validates :phone, presence: true
   validates :company, presence: true
 
-  has_many :activities
   has_many :properties
 
   scope :by_date, -> { order("created_at DESC") }
   scope :agents, -> { where(role: "agent") }
-  scope :active, -> { where(destroyed_at: nil) }
+  scope :active, -> { where("destroyed_at IS NULL") }
 
   def is_super_admin?
     user = self

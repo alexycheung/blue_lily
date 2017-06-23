@@ -1,0 +1,3 @@
+$("#version_<%= @version.id %>").replaceWith("<%= j render @version %>");
+$("#sidebar").replaceWith("<%= j render partial: 'layouts/sidebar' %>");
+$("#activity_log_link").addClass("active");

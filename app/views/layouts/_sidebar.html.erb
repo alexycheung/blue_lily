@@ -12,9 +12,9 @@
 			<label>Categories</label>
 			<span class="count"><%= Category.active.count %></span>
 		<% end %>
-		<%= link_to activities_path, class: "#{active_path(activities_path)}", "data-push" => "true", "data-target" => "#yield-container" do %>
+		<%= link_to versions_path, class: "#{active_path(versions_path)}", id: "activity_log_link", "data-push" => "true", "data-target" => "#yield-container" do %>
 			<label>Activity Log</label>
-			<span class="count"><%= Activity.all.count %></span>
+			<span class="count"><%= Version.all.count %></span>
 		<% end %>
 		<%= link_to users_path, class: "#{active_path(users_path)}", "data-push" => "true", "data-target" => "#yield-container" do %>
 			<label>Users</label>

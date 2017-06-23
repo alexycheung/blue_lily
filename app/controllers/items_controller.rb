@@ -36,7 +36,6 @@ class ItemsController < ApplicationController
 	def create
 		@item = Item.new(item_params)
 		if @item.save
-			track_activity @item
 			flash[:notice] = "Created item #{@item.name}"
 			redirect_to items_path
 		else
@@ -53,7 +52,6 @@ class ItemsController < ApplicationController
 	def update
 		@item = Item.find(params[:id])
 		if @item.update_attributes(item_params)
-			track_activity @item
 			flash[:notice] = "Updated item #{@item.name}"
 			redirect_to items_path
 		else
@@ -65,7 +63,6 @@ class ItemsController < ApplicationController
 	def destroy
 		@item = Item.find(params[:id])
 		if @item.update_attributes(destroyed_at: DateTime.now)
-			track_activity @item
 			flash[:notice] = "Deleted item #{@item.name}"
 		else
 			flash.now[:alert] = @item.errors.full_messages.first

@@ -1,4 +1,6 @@
 class Property < ApplicationRecord
+	has_paper_trail ignore: [:updated_at]
+
 	validates :address, presence: true
 	validates :city, presence: true
 	validates :state, presence: true
@@ -13,19 +15,21 @@ class Property < ApplicationRecord
 	has_many :photos
 
 	scope :by_start_date, -> { order("start_date DESC") }
-	scope :active, -> { where(destroyed_at: nil) }
+	scope :active, -> { where("destroyed_at IS NULL") }
 
 	# Return true if updated start_date / end_date conflicts with item availability
 	def schedule_conflict?(start_date, end_date)
 		property = self
-		property.items.active.each do |item|
-			item.reservations.active.where.not(property_id: property.id).each do |reservation|
-				if start_date >= reservation.property.start_date && start_date <= reservation.property.end_date
-					return true
-				elsif end_date >= reservation.property.start_date && end_date <= reservation.property.end_date
-					return true
-				elsif start_date <= reservation.property.start_date && end_date >= reservation.property.end_date
-					return true
+		if property.items.any?
+			property.items.active.each do |item|
+				item.reservations.active.where.not(property_id: property.id).each do |reservation|
+					if start_date >= reservation.property.start_date && start_date <= reservation.property.end_date
+						return true
+					elsif end_date >= reservation.property.start_date && end_date <= reservation.property.end_date
+						return true
+					elsif start_date <= reservation.property.start_date && end_date >= reservation.property.end_date
+						return true
+					end
 				end
 			end
 		end

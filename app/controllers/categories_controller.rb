@@ -13,7 +13,6 @@ class CategoriesController < ApplicationController
 	def create
 		@category = Category.new(category_params)
 		if @category.save
-			track_activity @category
 			flash[:notice] = "Created category #{@category.name}"
 			redirect_to categories_path
 		else
@@ -29,7 +28,6 @@ class CategoriesController < ApplicationController
 	def update
 		@category = Category.find(params[:id])
 		if @category.update_attributes(category_params)
-			track_activity @category
 			flash[:notice] = "Updated category #{@category.name}"
 			redirect_to categories_path
 		else
@@ -43,7 +41,6 @@ class CategoriesController < ApplicationController
 		if @category.items.active.any?
 			flash[:alert] = "Can't delete category that has items"
 		elsif @category.update_attributes(destroyed_at: DateTime.now)
-			track_activity @category
 			flash[:notice] = "Deleted category #{@category.name}"
 		else
 			flash.now[:alert] = @category.errors.full_messages.first

@@ -10,22 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170618223538) do
+ActiveRecord::Schema.define(version: 20170623021125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "activities", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "action"
-    t.integer  "trackable_id"
-    t.string   "trackable_type"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.datetime "destroyed_at"
-    t.index ["trackable_id"], name: "index_activities_on_trackable_id", using: :btree
-    t.index ["user_id"], name: "index_activities_on_user_id", using: :btree
-  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -53,9 +41,9 @@ ActiveRecord::Schema.define(version: 20170618223538) do
   create_table "photos", force: :cascade do |t|
     t.string   "url"
     t.integer  "property_id"
-    t.datetime "destroyed_at"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.datetime "destroyed_at"
   end
 
   create_table "properties", force: :cascade do |t|
@@ -74,9 +62,9 @@ ActiveRecord::Schema.define(version: 20170618223538) do
     t.string   "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.datetime "destroyed_at"
     t.string   "payment"
     t.string   "contract"
+    t.datetime "destroyed_at"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -111,6 +99,18 @@ ActiveRecord::Schema.define(version: 20170618223538) do
     t.datetime "destroyed_at"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "versions", force: :cascade do |t|
+    t.string   "item_type",      null: false
+    t.integer  "item_id",        null: false
+    t.string   "event",          null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+    t.datetime "undo_at"
+    t.text     "object_changes"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
   end
 
 end

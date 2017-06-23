@@ -35,7 +35,6 @@ class PropertiesController < ApplicationController
 	def create
 		@property = Property.new(property_params)
 		if @property.save
-			track_activity @property
 			flash[:notice] = "Created property #{@property.address}, #{@property.city}, #{@property.state}, #{@property.zip}"
 			redirect_to properties_path
 		else
@@ -57,7 +56,6 @@ class PropertiesController < ApplicationController
 			flash.now[:alert] = "Property dates conflict with item availability"
 			render "edit"
 		elsif @property.update_attributes(property_params)
-			track_activity @property
 			flash[:notice] = "Updated property #{@property.address}, #{@property.city}, #{@property.state}, #{@property.zip}"
 			redirect_to properties_path
 		else
@@ -69,7 +67,6 @@ class PropertiesController < ApplicationController
 	def destroy
 		@property = Property.find(params[:id])
 		if @property.update_attributes(destroyed_at: DateTime.now)
-			track_activity @property
 			flash[:notice] = "Deleted property #{@property.address}, #{@property.city}, #{@property.state}, #{@property.zip}"
 		else
 			flash.now[:alert] = @property.errors.full_messages.first
@@ -86,7 +83,7 @@ class PropertiesController < ApplicationController
 		@sizes = []
 
 		Item.active.each do |item|
-			if item.reservations.where(property_id: @property.id).any? || !item.reserved_for_property(@property.start_date, @property.end_date)
+			if item.reservations.active.where(property_id: @property.id).any? || !item.reserved_for_property(@property.start_date, @property.end_date)
 				if [nil, item.color].include?(params[:color]) &&
 					 [nil, item.condition].include?(params[:condition]) &&
 					 [nil, item.category.name].include?(params[:category]) &&
@@ -121,7 +118,6 @@ class PropertiesController < ApplicationController
 				sqft: response[:sqft],
 			)
 			if @property.save
-				track_activity @property
 				flash[:notice] = "Retrieved property #{@property.address}, #{@property.city}, #{@property.state}, #{@property.zip}"
 				redirect_to edit_property_path(@property)
 			else

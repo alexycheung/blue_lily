@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
 
 	def index
 		@item = Item.find(params[:item_id])
-		@reservations = @item.reservations.by_checkout
+		@reservations = @item.reservations.active.by_checkout
 	end
 
 	def create
@@ -15,7 +15,6 @@ class ReservationsController < ApplicationController
 			property_id: property.id,
 		)
 		if @reservation.save
-			track_activity @reservation
 			flash[:notice] = "Reserved #{item.name}"
 		else
 			flash[:alert] = @reservation.errors.full_messages.first
@@ -26,7 +25,6 @@ class ReservationsController < ApplicationController
 	def destroy
 		@reservation = Reservation.find(params[:id])
 		if @reservation.update_attributes(destroyed_at: DateTime.now)
-			track_activity @reservation
 			flash[:notice] = "Deleted reservation for #{@reservation.item.name}"
 		else
 			flash[:alert] = @reservation.errors.full_messages.first
@@ -48,7 +46,6 @@ class ReservationsController < ApplicationController
 			property = @item.reserved_for_property(DateTime.now, DateTime.now)
 			@reservation = @item.item_reservation(property)
 			if @reservation.update_attributes(checkin: DateTime.now)
-				track_activity(@reservation, action="checkin")
 				flash[:notice] = "Checked in #{@item.name} for #{property.address}, #{property.city}, #{property.state}"
 			else
 				flash[:alert] = @reservation.errors.full_messages.first
@@ -67,7 +64,6 @@ class ReservationsController < ApplicationController
 			property = @item.reserved_for_property(DateTime.now, DateTime.now)
 			@reservation = @item.item_reservation(property)
 			if @reservation.update_attributes(checkout: DateTime.now)
-				track_activity(@reservation, action="checkout")
 				flash[:notice] = "Checked out #{@item.name} for #{property.address}, #{property.city}, #{property.state}"
 			else
 				flash[:alert] = reservation.errors.full_messages.first

@@ -7,12 +7,21 @@ class ActivityPresenter < SimpleDelegator
 	end
 
 	def render_activity
-		"<tr>
-			<td>
-				<b>#{activity.user.name}</b> #{render_partial}
+		"<tr id='activity_#{activity.id}'>
+			<td class='nowrap'>
+				#{activity.user.name}
+			</td>
+			<td class='activity-description'>
+				#{render_partial}
 			</td>
 			<td class='nowrap'>
 				#{activity.created_at.strftime("%D")}
+			</td>
+			<td class='nowrap'>
+				#{activity.rollback_at.strftime('%D') if activity.is_rolled_back?}
+			</td>
+			<td class='nowrap'>
+				#{link_to 'Rollback', rollback_activity_path(activity), method: :post, remote: true, class: 'pure-button pure-button-primary medium round' unless activity.is_rolled_back?}
 			</td>
 		</tr>".html_safe
 	end

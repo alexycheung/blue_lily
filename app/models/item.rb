@@ -1,4 +1,6 @@
 class Item < ApplicationRecord
+	has_paper_trail ignore: [:updated_at]
+
 	validates :name, presence: true
 	validates :color, presence: true
 	validates :size, presence: true
@@ -13,7 +15,7 @@ class Item < ApplicationRecord
 	has_many :properties, through: :reservations
 
 	scope :by_date, -> { order("created_at DESC") }
-	scope :active, -> { where(destroyed_at: nil) }
+	scope :active, -> { where("destroyed_at IS NULL") }
 
 	# Return property if item is reserved on date
 	def reserved_for_property(start_date, end_date)

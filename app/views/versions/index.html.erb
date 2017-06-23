@@ -1,0 +1,16 @@
+<table class="pure-table" id="versions">
+	<thead>
+		<tr>
+			<th>User</th>
+			<th>Activity</th>
+			<th>Created</th>
+			<th>Undone</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render @versions %>
+	</tbody>
+</table>
+
+<%= paginate @versions %>

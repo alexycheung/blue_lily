@@ -9,7 +9,6 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save
-			track_activity @user
 			flash[:notice] = "Created user"
 			redirect_to users_path
 		else
@@ -29,7 +28,6 @@ class UsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 		if @user.update_attributes(user_params)
-			track_activity @user
 			flash[:notice] = "Updated user"
 			redirect_to users_path
 		else
@@ -41,7 +39,6 @@ class UsersController < ApplicationController
 	def destroy
 		@user = User.find(params[:id])
 		if @user.update_attributes(destroyed_at: DateTime.now)
-			track_activity @user
 			flash[:notice] = "Deleted user"
 		else
 			flash.now[:alert] = @user.errors.full_messages.first

@@ -6,7 +6,6 @@ class PhotosController < ApplicationController
 		@property = Property.find(params[:property_id])
 		@photo = @property.photos.build(photo_params)
 		if @photo.save
-			track_activity @photo
 			flash[:notice] = "Created photo for #{@property.address}, #{@property.city}, #{@property.state}"
 		else
 			flash.now[:alert] = @photo.errors.full_messages.first
@@ -18,7 +17,6 @@ class PhotosController < ApplicationController
 		@photo = Photo.find(params[:id])
 		@property = @photo.property
 		if @photo.update_attributes(destroyed_at: DateTime.now)
-			track_activity @photo
 			flash[:notice] = "Deleted photo for #{@property.address}, #{@property.city}, #{@property.state}"
 		else
 			flash.now[:alert] = @photo.errors.full_messages.first

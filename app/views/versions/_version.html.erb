@@ -1,0 +1,19 @@
+<tr id="version_<%= version.id %>">
+	<td class="nowrap">
+		<% if version.whodunnit %>
+			<%= User.find(version.whodunnit).name %>
+		<% end %>
+	</td>
+	<td>
+		<%= formatted_version_item(version) %>
+	</td>
+	<td class="nowrap">
+		<%= version.created_at.strftime("%D") %>
+	</td>
+	<td class="nowrap">
+		<%= version.undo_at.strftime("%D") if version.is_undone? %>
+	</td>
+	<td class="nowrap">
+		<%= link_to "undo", undo_version_path(version), class: "pure-button pure-button-primary medium round", method: :post, remote: true unless version.is_undone? %>
+	</td>
+</tr>

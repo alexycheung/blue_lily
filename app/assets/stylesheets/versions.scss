@@ -1,0 +1,23 @@
+@import "universal.scss";
+
+/* index */
+
+#versions {
+	margin-bottom: 20px;
+
+	tbody {
+		tr {
+
+			td {
+				height: 41px;
+			}
+
+			.version-description {
+				a {
+					color: $primary;
+					font-weight: 600;
+				}
+			}
+		}
+	}
+}
