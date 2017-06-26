@@ -7,7 +7,13 @@ class ApplicationController < ActionController::Base
 
     def admin_user
       unless current_user && current_user.is_admin? || current_user.is_super_admin?
-        redirect_to '/401'
+        redirect_to root_path
+      end
+    end
+
+    def super_admin_user
+      unless current_user && current_user.is_super_admin?
+        redirect_to root_path
       end
     end
 

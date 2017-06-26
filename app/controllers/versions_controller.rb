@@ -1,6 +1,7 @@
 class VersionsController < ApplicationController
 	before_action :authenticate_user!
 	before_action :admin_user
+	before_action :super_admin_user
 
 	def index
 		@versions = Version.by_date.page params[:page]
