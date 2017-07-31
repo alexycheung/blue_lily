@@ -5,6 +5,12 @@
 /* forms */
 
 form {
+	legend {
+		margin-bottom: 20px !important;
+		display: block;
+		border-bottom: 2px solid #F3F7FB !important;
+	}
+
 	.form-inputs {
 		.input {
 			padding-bottom: 20px;
@@ -15,6 +21,7 @@ form {
 				color: #6E7A8B;
 				font-weight: 500;
 				font-size: 12px;
+				font-family: "Helvetica Neue";
 			}
 
 			select, input, textarea {

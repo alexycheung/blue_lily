@@ -4,19 +4,62 @@
       <%= label_tag :photo %>
       <%= f.filepicker_field :photo, button_text: item_photo(@item), button_class: "upload-photo pure-button subtle-button", onchange: "onItemPhotoUpload(event)" %>
     </div>
-    <%= f.input :name, error: false, autofocus: true %>
-    <%= f.input :vendor_item_number, error: false %>
-    <%= f.input :color, error: false %>
-    <%= f.input :description, error: false %>
-    <%= f.input :size, error: false, as: :select, collection: ["S", "M", "L"] %>
-    <%= f.input :vendor_id, error: false, as: :select, collection: Vendor.active.by_name, selected: @item.vendor ? @item.vendor.id : nil, include_blank: "" %>
-    <%= f.input :condition, error: false, as: :select, collection: ["new", "like new", "very good", "good", "acceptable", "unacceptable"] %>
-    <%= f.input :category_id, error: false, as: :select, collection: @categories, include_blank: "", selected: @item.category ? @item.category.id : nil %>
-    <%= f.input :purchase_price, as: :string, error: false, input_html: { "data-an-default" => @item.purchase_price } %>
-    <%= f.input :sale_price, as: :string, error: false, input_html: { "data-an-default" => @item.sale_price } %>
-    <%= f.input :height, error: false %>
-    <%= f.input :length, error: false %>
-    <%= f.input :width, error: false %>
+
+    <legend></legend>
+
+    <div class="pure-g">
+      <div class="pure-u-1-4">
+        <%= f.input :name, error: false, autofocus: true %>
+      </div>
+      <div class="pure-u-1-4">
+        <%= f.input :color, error: false %>
+      </div>
+      <div class="pure-u-1-4">
+        <%= f.input :condition, error: false, as: :select, collection: ["new", "like new", "very good", "good", "acceptable", "unacceptable"] %>
+      </div>
+      <div class="pure-u-1-4">
+        <%= f.input :size, error: false, as: :select, collection: ["S", "M", "L"] %>    
+      </div>
+
+      <div class="pure-u-1-4">
+        <%= f.input :category_id, error: false, as: :select, collection: @categories, include_blank: "", selected: @item.category ? @item.category.id : nil %>
+      </div>
+      <div class="pure-u-1-4">
+        <%= f.input :height, error: false %>
+      </div>
+      <div class="pure-u-1-4">
+        <%= f.input :length, error: false %>
+      </div>
+      <div class="pure-u-1-4">
+        <%= f.input :width, error: false %>
+      </div>
+
+      <div class="pure-u-1-4">
+        <%= f.input :description, error: false %>
+      </div>
+    </div>
+
+    <legend></legend>
+
+    <div class="pure-g form-inputs">
+      <div class="pure-u-1-4">
+        <%= f.input :vendor_id, error: false, as: :select, collection: Vendor.active.by_name, selected: @item.vendor ? @item.vendor.id : nil, include_blank: "" %>
+      </div>
+      <div class="pure-u-1-4">
+        <%= f.input :vendor_item_number, error: false %>
+      </div>
+    </div>
+
+    <legend></legend>
+
+    <div class="pure-g form-inputs">
+      <div class="pure-u-1-4">
+        <%= f.input :purchase_price, as: :string, error: false, input_html: { "data-an-default" => @item.purchase_price  } %>
+      </div>
+      <div class="pure-u-1-4">
+        <%= f.input :sale_price, as: :string, error: false, input_html: { "data-an-default" => @item.sale_price } %>
+      </div>
+    </div>
   </div>
 
   <div class="form-actions">
