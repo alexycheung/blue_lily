@@ -5,15 +5,13 @@ class Item < ApplicationRecord
 
 	validates :name, presence: true
 	validates :color, presence: true
-	validates :size, presence: true
-	validates :condition, presence: true
-	validates :purchase_price, presence: true
 	validates :description, presence: true
 	validates :category_id, presence: true, numericality: true
 	validates :vendor_id, presence: true, numericality: true
 
 	belongs_to :category
 	belongs_to :vendor
+	has_many :units
 	has_many :reservations
 	has_many :properties, through: :reservations
 

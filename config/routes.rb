@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   get '/properties/zillow', to: 'properties#zillow', as: 'zillow_property'
   get '/properties/:id/barcodes', to: 'properties#barcodes', as: 'barcodes_property'
 
-  resources :items, except: [:show]
+  resources :items, except: [:show] do
+    resources :units
+  end
   get '/items/:id/zoom', to: 'items#zoom', as: 'zoom'
   get '/items/:id/barcode', to: 'items#barcode', as: 'barcode_item'
 
