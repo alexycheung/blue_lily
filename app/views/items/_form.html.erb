@@ -13,6 +13,9 @@
     <%= f.input :category_id, error: false, as: :select, collection: @categories, include_blank: "", selected: @item.category ? @item.category.id : nil %>
     <%= f.input :purchase_price, as: :string, error: false, input_html: { "data-an-default" => @item.purchase_price } %>
     <%= f.input :sale_price, as: :string, error: false, input_html: { "data-an-default" => @item.sale_price } %>
+    <%= f.input :height, error: false %>
+    <%= f.input :length, error: false %>
+    <%= f.input :width, error: false %>
   </div>
 
   <div class="form-actions">
