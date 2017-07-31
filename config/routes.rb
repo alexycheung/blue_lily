@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :items, except: [:show]
   get '/items/:id/zoom', to: 'items#zoom', as: 'zoom'
+  get '/items/:id/barcode', to: 'items#barcode', as: 'barcode_item'
 
   resources :reservations, only: [:create, :index, :destroy]
   get '/reservations/manage_checkin', to: 'reservations#manage_checkin', as: 'manage_checkin_reservations'

@@ -87,6 +87,10 @@ class ItemsController < ApplicationController
 		end
 	end
 
+	def barcode
+		@item = Item.find(params[:id])
+	end
+
 	private
 
 		def item_params
