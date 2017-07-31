@@ -44,6 +44,8 @@ gem 'barby'
 gem 'kaminari'
 # Versioning models. Read more: https://github.com/airblade/paper_trail
 gem 'paper_trail'
+# Intelligent search. Read more: https://github.com/ankane/searchkick
+gem 'searchkick'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -83,7 +83,13 @@ class PropertiesController < ApplicationController
 		@sizes = []
 		@vendors = []
 
-		Item.active.each do |item|
+		if params[:query] && !params[:query].empty?
+			items = Item.search(params[:query], fields: [:name, :vendor_item_number])
+		else
+			items = Item.active.by_date
+		end
+
+		items.each do |item|
 			if item.reservations.active.where(property_id: @property.id).any? || !item.reserved_for_property(@property.start_date, @property.end_date)
 				if [nil, item.color].include?(params[:color]) &&
 					 [nil, item.condition].include?(params[:condition]) &&

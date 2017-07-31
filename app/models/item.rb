@@ -1,6 +1,8 @@
 class Item < ApplicationRecord
 	has_paper_trail ignore: [:updated_at]
 
+	searchkick word_start: [:name, :vendor_item_number]
+
 	validates :name, presence: true
 	validates :color, presence: true
 	validates :size, presence: true

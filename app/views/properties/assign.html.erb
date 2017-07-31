@@ -3,6 +3,22 @@
 		<%= @property.address %>, <%= @property.city %>, <%= @property.state %>
 	</h4>
 
+	<%= form_tag items_path, method: :get, id: "search-properties-assign", class: "pure-form pure-form-stacked" do %>
+	<div class="form-inputs">
+		<span class="input">
+			<%= text_field_tag :query, params[:query], placeholder: "Search..." %>
+			<%= hidden_field_tag :color, params[:color] if params[:color] %>
+			<%= hidden_field_tag :vendor, params[:vendor] if params[:vendor] %>
+			<%= hidden_field_tag :condition, params[:condition] if params[:condition] %>
+			<%= hidden_field_tag :category, params[:category] if params[:category] %>
+			<%= hidden_field_tag :size, params[:size] if params[:size] %>
+		</span>
+	</div>
+	<div class="form-actions">
+		<%= button_tag raw("#{fa_icon 'search'}"), class: "pure-button pure-button-primary" %>
+	</div>
+<% end %>
+
 	<div id="filter">
 		<div class="dropdown">
 			<a id="color-trigger" class="trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -11,9 +27,9 @@
 			</a>
 			<ul class="dropdown-menu" aria-labelledby="color-trigger">
 				<% @colors.each do |color| %>
-					<li><%= link_to color, assign_property_path(@property, color: color, vendor: params[:vendor], condition: params[:condition], category: params[:category], size: params[:size]) %></li>
+					<li><%= link_to color, assign_property_path(@property, color: color, vendor: params[:vendor], condition: params[:condition], category: params[:category], size: params[:size], query: params[:query]) %></li>
 				<% end %>
-				<li><%= link_to "all colors", assign_property_path(@property, color: nil, vendor: params[:vendor], condition: params[:condition], category: params[:category], size: params[:size]) %></li>
+				<li><%= link_to "all colors", assign_property_path(@property, color: nil, vendor: params[:vendor], condition: params[:condition], category: params[:category], size: params[:size], query: params[:query]) %></li>
 			</ul>
 		</div>
 
@@ -24,9 +40,9 @@
 			</a>
 			<ul class="dropdown-menu" aria-labelledby="condition-trigger">
 				<% @conditions.each do |condition| %>
-					<li><%= link_to condition, assign_property_path(@property, condition: condition, vendor: params[:vendor], color: params[:color], category: params[:category], size: params[:size]) %></li>
+					<li><%= link_to condition, assign_property_path(@property, condition: condition, vendor: params[:vendor], color: params[:color], category: params[:category], size: params[:size], query: params[:query]) %></li>
 				<% end %>
-				<li><%= link_to "all conditions", assign_property_path(@property, condition: nil, vendor: params[:vendor], color: params[:color], category: params[:category], size: params[:size]) %></li>
+				<li><%= link_to "all conditions", assign_property_path(@property, condition: nil, vendor: params[:vendor], color: params[:color], category: params[:category], size: params[:size], query: params[:query]) %></li>
 			</ul>
 		</div>
 
@@ -37,9 +53,9 @@
 			</a>
 			<ul class="dropdown-menu" aria-labelledby="category-trigger">
 				<% @categories.each do |category| %>
-					<li><%= link_to category, assign_property_path(@property, category: category, vendor: params[:vendor], condition: params[:condition], color: params[:color], size: params[:size]) %></li>
+					<li><%= link_to category, assign_property_path(@property, category: category, vendor: params[:vendor], condition: params[:condition], color: params[:color], size: params[:size], query: params[:query]) %></li>
 				<% end %>
-				<li><%= link_to "all categories", assign_property_path(@property, category: nil, vendor: params[:vendor], condition: params[:condition], color: params[:color], size: params[:size]) %></li>
+				<li><%= link_to "all categories", assign_property_path(@property, category: nil, vendor: params[:vendor], condition: params[:condition], color: params[:color], size: params[:size], query: params[:query]) %></li>
 			</ul>
 		</div>
 
@@ -50,9 +66,9 @@
 			</a>
 			<ul class="dropdown-menu" aria-labelledby="vendor-trigger">
 				<% @vendors.each do |vendor| %>
-					<li><%= link_to vendor, assign_property_path(@property, vendor: vendor, category: params[:category], condition: params[:condition], color: params[:color], size: params[:size]) %></li>
+					<li><%= link_to vendor, assign_property_path(@property, vendor: vendor, category: params[:category], condition: params[:condition], color: params[:color], size: params[:size], query: params[:query]) %></li>
 				<% end %>
-				<li><%= link_to "all vendors", assign_property_path(@property, vendor: nil, category: params[:category], condition: params[:condition], color: params[:color], size: params[:size]) %></li>
+				<li><%= link_to "all vendors", assign_property_path(@property, vendor: nil, category: params[:category], condition: params[:condition], color: params[:color], size: params[:size], query: params[:query]) %></li>
 			</ul>
 		</div>
 
@@ -63,9 +79,9 @@
 			</a>
 			<ul class="dropdown-menu" aria-labelledby="size-trigger">
 				<% @sizes.each do |size| %>
-					<li><%= link_to size, assign_property_path(@property, size: size, vendor: params[:vendor], condition: params[:condition], category: params[:category], color: params[:color]) %></li>
+					<li><%= link_to size, assign_property_path(@property, size: size, vendor: params[:vendor], condition: params[:condition], category: params[:category], color: params[:color], query: params[:query]) %></li>
 				<% end %>
-				<li><%= link_to "all sizes", assign_property_path(@property, size: nil, vendor: params[:vendor], condition: params[:condition], category: params[:category], color: params[:color]) %></li>
+				<li><%= link_to "all sizes", assign_property_path(@property, size: nil, vendor: params[:vendor], condition: params[:condition], category: params[:category], color: params[:color], query: params[:query]) %></li>
 			</ul>
 		</div>
 	</div>

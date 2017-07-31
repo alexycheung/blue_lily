@@ -30,6 +30,34 @@
 	}
 }
 
+#search-items-index {
+	float: right;
+	margin-top: -3px;
+	margin-left: 15px;
+
+	.form-inputs {
+		display: inline-block;
+
+		input {
+			@include border-radius(2px 0 0 2px);
+			width: 150px;
+			font-size: 12px;
+			margin-right: -4px;
+		}
+	}
+
+	.form-actions {
+		display: inline-block;
+
+		.pure-button {
+			@include border-radius(0 2px 2px 0);
+			font-size: 12px;
+			padding-top: 7px;
+			padding-bottom: 6px;
+		}
+	}
+}
+
 
 /* _form */
 

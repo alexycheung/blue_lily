@@ -10,7 +10,13 @@ class ItemsController < ApplicationController
 		@vendors = []
 		@sizes = []
 
-		Item.active.by_date.each do |item|
+		if params[:query] && !params[:query].empty?
+			items = Item.search(params[:query], fields: [:name, :vendor_item_number])
+		else
+			items = Item.active.by_date
+		end
+
+		items.each do |item|
 			if [nil, item.color].include?(params[:color]) &&
 				 [nil, item.condition].include?(params[:condition]) &&
 				 [nil, item.category.name].include?(params[:category]) &&
