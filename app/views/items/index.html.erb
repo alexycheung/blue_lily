@@ -8,7 +8,6 @@
 			<%= text_field_tag :query, params[:query], placeholder: "Search..." %>
 			<%= hidden_field_tag :color, params[:color] if params[:color] %>
 			<%= hidden_field_tag :vendor, params[:vendor] if params[:vendor] %>
-			<%= hidden_field_tag :condition, params[:condition] if params[:condition] %>
 			<%= hidden_field_tag :category, params[:category] if params[:category] %>
 			<%= hidden_field_tag :size, params[:size] if params[:size] %>
 		</span>
@@ -26,22 +25,9 @@
 		</a>
 		<ul class="dropdown-menu" aria-labelledby="color-trigger">
 			<% @colors.each do |color| %>
-				<li><%= link_to color, items_path(color: color, vendor: params[:vendor], condition: params[:condition], category: params[:category], size: params[:size], query: params[:query]) %></li>
+				<li><%= link_to color, items_path(color: color, vendor: params[:vendor], category: params[:category], size: params[:size], query: params[:query]) %></li>
 			<% end %>
-			<li><%= link_to "all colors", items_path(color: nil, vendor: params[:vendor], condition: params[:condition], category: params[:category], size: params[:size], query: params[:query]) %></li>
-		</ul>
-	</div>
-
-	<div class="dropdown">
-		<a id="condition-trigger" class="trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			<%= params[:condition] ? params[:condition] : "all conditions" %>
-			<%= fa_icon 'caret-down' %>
-		</a>
-		<ul class="dropdown-menu" aria-labelledby="condition-trigger">
-			<% @conditions.each do |condition| %>
-				<li><%= link_to condition, items_path(condition: condition, vendor: params[:vendor], color: params[:color], category: params[:category], size: params[:size], query: params[:query]) %></li>
-			<% end %>
-			<li><%= link_to "all conditions", items_path(condition: nil, vendor: params[:vendor], color: params[:color], category: params[:category], size: params[:size], query: params[:query]) %></li>
+			<li><%= link_to "all colors", items_path(color: nil, vendor: params[:vendor], category: params[:category], size: params[:size], query: params[:query]) %></li>
 		</ul>
 	</div>
 
@@ -52,9 +38,9 @@
 		</a>
 		<ul class="dropdown-menu" aria-labelledby="category-trigger">
 			<% @categories.each do |category| %>
-				<li><%= link_to category, items_path(category: category, vendor: params[:vendor], condition: params[:condition], color: params[:color], size: params[:size], query: params[:query]) %></li>
+				<li><%= link_to category, items_path(category: category, vendor: params[:vendor], color: params[:color], size: params[:size], query: params[:query]) %></li>
 			<% end %>
-			<li><%= link_to "all categories", items_path(category: nil, vendor: params[:vendor], condition: params[:condition], color: params[:color], size: params[:size], query: params[:query]) %></li>
+			<li><%= link_to "all categories", items_path(category: nil, vendor: params[:vendor], color: params[:color], size: params[:size], query: params[:query]) %></li>
 		</ul>
 	</div>
 
@@ -65,9 +51,9 @@
 		</a>
 		<ul class="dropdown-menu" aria-labelledby="vendor-trigger">
 			<% @vendors.each do |vendor| %>
-				<li><%= link_to vendor, items_path(vendor: vendor, category: params[:category], condition: params[:condition], color: params[:color], size: params[:size], query: params[:query]) %></li>
+				<li><%= link_to vendor, items_path(vendor: vendor, category: params[:category], color: params[:color], size: params[:size], query: params[:query]) %></li>
 			<% end %>
-			<li><%= link_to "all vendors", items_path(vendor: nil, category: params[:category], condition: params[:condition], color: params[:color], size: params[:size], query: params[:query]) %></li>
+			<li><%= link_to "all vendors", items_path(vendor: nil, category: params[:category], color: params[:color], size: params[:size], query: params[:query]) %></li>
 		</ul>
 	</div>
 
@@ -78,9 +64,9 @@
 		</a>
 		<ul class="dropdown-menu" aria-labelledby="size-trigger">
 			<% @sizes.each do |size| %>
-				<li><%= link_to size, items_path(size: size, vendor: params[:vendor], condition: params[:condition], category: params[:category], color: params[:color], query: params[:query]) %></li>
+				<li><%= link_to size, items_path(size: size, vendor: params[:vendor], category: params[:category], color: params[:color], query: params[:query]) %></li>
 			<% end %>
-			<li><%= link_to "all sizes", items_path(size: nil, vendor: params[:vendor], condition: params[:condition], category: params[:category], color: params[:color], query: params[:query]) %></li>
+			<li><%= link_to "all sizes", items_path(size: nil, vendor: params[:vendor], category: params[:category], color: params[:color], query: params[:query]) %></li>
 		</ul>
 	</div>
 </div>
@@ -95,8 +81,7 @@
 			<th>Size</th>
 			<th>Color</th>
 			<th>Category</th>
-			<th>Condition</th>
-			<th>Status</th>
+			<th>Units</th>
 			<th></th>
 		</tr>
 	</thead>

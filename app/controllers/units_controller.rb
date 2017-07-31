@@ -8,15 +8,20 @@ class UnitsController < ApplicationController
 		@units = @item.units.active.by_date
 	end
 
+	def new
+		@item = Item.find(params[:item_id])
+		@unit = Unit.new
+	end
+
 	def create
 		@item = Item.find(params[:item_id])
-		@unit = @item.units.build(item_params)
+		@unit = @item.units.build(unit_params)
 		if @unit.save
 			flash[:notice] = "Created unit for #{@item.name}"
-			redirect_to edit_item_units_path(@item, @unit)
+			redirect_to item_units_path(@item)
 		else
 			flash[:alert] = @unit.errors.full_messages.first
-			redirect_to item_units_path(@item)
+			redirect_to edit_item_unit_path(@item, @unit)
 		end
 	end
 
@@ -30,7 +35,7 @@ class UnitsController < ApplicationController
 		@unit = Unit.find(params[:id])
 		if @unit.update_attributes(unit_params)
 			flash[:notice] = "Updated unit for #{@item.name}"
-			redirect_to edit_item_units_path(@item, @unit)
+			redirect_to item_units_path(@item)
 		else
 			flash.now[:alert] = @unit.errors.full_messages_first
 			render "edit"
@@ -40,7 +45,7 @@ class UnitsController < ApplicationController
 	def destroy
 		@item = Item.find(params[:item_id])
 		@unit = Unit.find(params[:id])
-		if @unit.update_attributes(destroyed: DateTime.now)
+		if @unit.update_attributes(destroyed_at: DateTime.now)
 			flash[:notice] = "Deleted unit for #{@item.name}"
 		else
 			flash.now[:alert] = @unit.errors.full_messages.first

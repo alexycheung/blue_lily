@@ -1,0 +1,22 @@
+<div id="units-index">
+	<h4><%= @item.name %> Units</h4>
+
+	<%= link_to new_item_unit_path(@item, @unit), class: "pure-button pure-button-primary medium round", id: "add-unit-button" do %>
+		<%= fa_icon 'plus', class: 'left-icon' %> 
+		Add Unit
+	<% end %>
+
+	<table class="pure-table">
+		<thead>
+			<tr>
+				<th>Condition</th>
+				<th>Purchase Price</th>
+				<th>Sale Price</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<%= render @units %>	
+		</tbody>
+	</table>
+</div>

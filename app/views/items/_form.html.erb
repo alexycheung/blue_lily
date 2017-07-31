@@ -15,14 +15,14 @@
         <%= f.input :color, error: false %>
       </div>
       <div class="pure-u-1-4">
-        <%= f.input :condition, error: false, as: :select, collection: ["new", "like new", "very good", "good", "acceptable", "unacceptable"] %>
-      </div>
-      <div class="pure-u-1-4">
         <%= f.input :size, error: false, as: :select, collection: ["S", "M", "L"] %>    
       </div>
-
       <div class="pure-u-1-4">
         <%= f.input :category_id, error: false, as: :select, collection: @categories, include_blank: "", selected: @item.category ? @item.category.id : nil %>
+      </div>
+      
+      <div class="pure-u-1-4">
+        <%= f.input :description, error: false %>
       </div>
       <div class="pure-u-1-4">
         <%= f.input :height, error: false %>
@@ -32,10 +32,6 @@
       </div>
       <div class="pure-u-1-4">
         <%= f.input :width, error: false %>
-      </div>
-
-      <div class="pure-u-1-4">
-        <%= f.input :description, error: false %>
       </div>
     </div>
 
@@ -47,17 +43,6 @@
       </div>
       <div class="pure-u-1-4">
         <%= f.input :vendor_item_number, error: false %>
-      </div>
-    </div>
-
-    <legend></legend>
-
-    <div class="pure-g form-inputs">
-      <div class="pure-u-1-4">
-        <%= f.input :purchase_price, as: :string, error: false, input_html: { "data-an-default" => @item.purchase_price  } %>
-      </div>
-      <div class="pure-u-1-4">
-        <%= f.input :sale_price, as: :string, error: false, input_html: { "data-an-default" => @item.sale_price } %>
       </div>
     </div>
   </div>
