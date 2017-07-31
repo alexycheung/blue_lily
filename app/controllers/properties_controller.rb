@@ -76,7 +76,7 @@ class PropertiesController < ApplicationController
 
 	def assign
 		@property = Property.find(params[:id])
-		@items = []
+		@units = []
 		@colors = []
 		@conditions = []
 		@categories = []
@@ -84,22 +84,24 @@ class PropertiesController < ApplicationController
 		@vendors = []
 
 		if params[:query] && !params[:query].empty?
-			items = Item.search(params[:query], fields: [:name, :vendor_item_number])
+			items = Item.active.search(params[:query], fields: [:name, :vendor_item_number])
 		else
 			items = Item.active.by_date
 		end
 
 		items.each do |item|
-			if item.reservations.active.where(property_id: @property.id).any? || !item.reserved_for_property(@property.start_date, @property.end_date)
-				if [nil, item.color].include?(params[:color]) &&
-					 [nil, item.condition].include?(params[:condition]) &&
-					 [nil, item.category.name].include?(params[:category]) &&
-					 [nil, item.size].include?(params[:size]) &&
-					 [nil, item.vendor.name].include?(params[:vendor])
-					@items << item
+			item.units.active.each do |unit|
+				if unit.reservations.active.where(property_id: @property.id).any? || !unit.reserved_for_property(@property.start_date, @property.end_date)
+					if [nil, unit.condition].include?(params[:condition]) &&
+						 [nil, item.color].include?(params[:color]) &&
+						 [nil, item.category.name].include?(params[:category]) &&
+						 [nil, item.size].include?(params[:size]) &&
+						 [nil, item.vendor.name].include?(params[:vendor])
+						@units << unit
+					end
 				end
+				@conditions << unit.condition
 				@colors << item.color
-				@conditions << item.condition
 				@categories << item.category.name
 				@sizes << item.size
 				@vendors << item.vendor.name
@@ -146,7 +148,6 @@ class PropertiesController < ApplicationController
 
 	def barcodes
 		@property = Property.find(params[:id])
-		@items = @property.items.active
 	end
 
 	private

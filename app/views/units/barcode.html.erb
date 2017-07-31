@@ -1,0 +1,6 @@
+<div id="units-barcode">
+	<div class="barcode">
+		<%= unit_barcode(@unit) %>
+		<div class="identification"><%= @unit.id %> - <%= truncate(@item.name, length: 40) %></div>
+	</div>
+</div>

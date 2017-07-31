@@ -144,22 +144,49 @@ module VersionsHelper
 					return updated_fields.html_safe
 				end
 			end
+		elsif version.item_type == "Unit"
+			unit = Unit.find(version.item_id)
+			if version.event == "create"
+				return "created unit ##{unit.id} for <b>#{unit.item.name}</b>".html_safe
+			elsif version.event == "update"
+				changeset = unit.versions.find(version.id).changeset
+				if changeset["destroyed_at"]
+					if changeset["destroyed_at"][0]
+						return "retored unit ##{unit.id} for <b>#{unit.item.name}</b>>".html_safe
+					else
+						return "destroyed unit ##{unit.id} for <b>#{unit.item.name}</b>".html_safe
+					end
+				else
+					updated_fields = "updated unit ##{unit.id}: "
+					changeset.to_a.each_with_index do |change, index|
+						field = change[0]
+						old_value = change[1][0]
+						new_value = change[1][1]
+						unless [nil, ""].include?(old_value) && [nil, ""].include?(new_value)
+							updated_fields += ", " if index != 0
+							updated_fields += "#{field} from <b>#{old_value ? old_value : 'nil'}</b> to <b>#{new_value ? new_value : 'nil'}</b>"
+						end
+					end
+					return updated_fields.html_safe
+				end
+			end
 		elsif version.item_type == "Reservation"
 			reservation = Reservation.find(version.item_id)
-			item = reservation.item
+			unit = reservation.unit
+			item = unit.item
 			property = reservation.property
 			if version.event == "create"
-				return "created reservation for item <b>#{item.name}</b> at property <b>#{property.address}, #{property.city}</b>".html_safe
+				return "created reservation for <b>#{item.name} (unit ##{unit.id})</b> at property <b>#{property.address}, #{property.city}</b>".html_safe
 			elsif version.event == "update"
 				changeset = reservation.versions.find(version.id).changeset
 				if changeset["destroyed_at"]
 					if changeset["destroyed_at"][0]
-						return "restored reservation for item <b>#{item.name}</b> at property <b>#{property.address}, #{property.city}</b>".html_safe
+						return "restored reservation for <b>#{item.name} (unit ##{unit.id})</b> at property <b>#{property.address}, #{property.city}</b>".html_safe
 					else
-						return "destroyed reservation for item <b>#{item.name}</b> at property <b>#{property.address}, #{property.city}</b>".html_safe
+						return "destroyed reservation for <b>#{item.name} (unit ##{unit.id})</b> at property <b>#{property.address}, #{property.city}</b>".html_safe
 					end
 				else
-					updated_fields = "updated reservation for item <b>#{item.name}</b> at property <b>#{property.address}, #{property.city}</b>: "
+					updated_fields = "updated reservation for <b>#{item.name} (unit ##{unit.id})</b> at property <b>#{property.address}, #{property.city}</b>: "
 					changeset.to_a.each_with_index do |change, index|
 						field = change[0]
 						old_value = change[1][0]

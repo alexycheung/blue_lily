@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
 		@sizes = []
 
 		if params[:query] && !params[:query].empty?
-			items = Item.search(params[:query], fields: [:name, :vendor_item_number])
+			items = Item.active.search(params[:query], fields: [:name, :vendor_item_number])
 		else
 			items = Item.active.by_date
 		end
@@ -81,10 +81,6 @@ class ItemsController < ApplicationController
 		respond_to do |format|
 			format.js
 		end
-	end
-
-	def barcode
-		@item = Item.find(params[:id])
 	end
 
 	private

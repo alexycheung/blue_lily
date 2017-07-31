@@ -29,11 +29,11 @@
 	</div>
 	<div class="divider"></div>
 	<div class="container">
-		<%= link_to manage_checkin_reservations_path, class: "#{active_path(manage_checkin_reservations_path)}", "data-push" => "true", "data-target" => "#yield-container" do %>
-			<label>Checkin</label>
-		<% end %>
 		<%= link_to manage_checkout_reservations_path, class: "#{active_path(manage_checkout_reservations_path)}", "data-push" => "true", "data-target" => "#yield-container" do %>
 			<label>Checkout</label>
+		<% end %>
+		<%= link_to manage_checkin_reservations_path, class: "#{active_path(manage_checkin_reservations_path)}", "data-push" => "true", "data-target" => "#yield-container" do %>
+			<label>Checkin</label>
 		<% end %>
 	</div>
 	<div class="divider"></div>

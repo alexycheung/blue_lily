@@ -7,9 +7,4 @@ module ItemsHelper
 			return "#{fa_icon 'camera'}"
 		end
 	end
-
-	# Create barcode based on item `id`
-	def item_barcode(item)
-		return Barby::Code128.new(item.id).to_svg(height: 40, margin: 0).html_safe
-	end
 end

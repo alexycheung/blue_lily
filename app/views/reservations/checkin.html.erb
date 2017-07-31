@@ -1,8 +1,0 @@
-<%= simple_form_for :item, url: checkin_item_path, method: :post, html: { class: "pure-form pure-form-stacked", id: "checkin-item" } do |f| %>
-	<div class="form-inputs">
-		<%= f.input :id, autofocus: true, label: "Item ID" %>
-	</div>
-	<div class="form-actions">
-		<%= f.button :submit, "Checkin", class: "pure-button pure-button-primary" %>
-	</div>
-<% end %>

@@ -42,6 +42,11 @@ class UnitsController < ApplicationController
 		end
 	end
 
+	def barcode
+		@item = Item.find(params[:item_id])
+		@unit = Unit.find(params[:id])
+	end
+
 	def destroy
 		@item = Item.find(params[:item_id])
 		@unit = Unit.find(params[:id])

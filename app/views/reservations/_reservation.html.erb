@@ -6,7 +6,7 @@
 			<%= reservation.property.state %>
 		<% end %>
 	</td>
-	<td><%= reservation.property.user.name %></td>
+	<td><%= reservation.property.user.name if reservation.property.user %></td>
 	<td><%= reservation.created_at.strftime("%D") %></td>
 	<td><%= reservation.checkout.strftime("%D") if reservation.checkout %></td>
 	<td><%= reservation.checkin.strftime("%D") if reservation.checkin %></td>

@@ -1,6 +1,6 @@
-<%= simple_form_for :item, url: checkout_reservations_path, method: :post, html: { class: "pure-form pure-form-stacked", id: "checkout-item" } do |f| %>
+<%= simple_form_for :unit, url: checkout_reservations_path, method: :post, html: { class: "pure-form pure-form-stacked", id: "checkout-unit" } do |f| %>
 	<div class="form-inputs">
-		<%= f.input :item_id, autofocus: true, label: "Item ID" %>
+		<%= f.input :unit_id, autofocus: true, label: "Unit ID" %>
 	</div>
 	<div class="form-actions">
 		<%= f.button :submit, "Checkout", class: "pure-button pure-button-primary large round" %>

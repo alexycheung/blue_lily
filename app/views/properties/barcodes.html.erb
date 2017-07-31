@@ -1,8 +1,8 @@
 <div id="properties-barcodes">
-	<% @items.each do |item| %>
+	<% @property.reservations.each do |reservation| %>
 		<div class="barcode">
-			<%= item_barcode(item) %>
-			<div class="identification"><%= item.id %> - <%= truncate(item.name, length: 40) %></div>
+			<%= unit_barcode(reservation.unit) %>
+			<div class="identification"><%= reservation.unit.id %> - <%= truncate(reservation.unit.item.name, length: 40) %></div>
 		</div>
 	<% end %>
 </div>

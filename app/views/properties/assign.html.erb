@@ -3,7 +3,7 @@
 		<%= @property.address %>, <%= @property.city %>, <%= @property.state %>
 	</h4>
 
-	<%= form_tag items_path, method: :get, id: "search-properties-assign", class: "pure-form pure-form-stacked" do %>
+	<%= form_tag assign_property_path(@property), method: :get, id: "search-properties-assign", class: "pure-form pure-form-stacked" do %>
 	<div class="form-inputs">
 		<span class="input">
 			<%= text_field_tag :query, params[:query], placeholder: "Search..." %>
@@ -103,8 +103,8 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @items.each do |item| %>
-				<%= render partial: "items/reserve", locals: { item: item } %>
+			<% @units.each do |unit| %>
+				<%= render partial: "units/reserve", locals: { unit: unit, item: unit.item } %>
 			<% end %>
 		</tbody>
 	</table>

@@ -1,8 +1,12 @@
 <tr>
+	<td><%= unit_status(unit) %></td>
 	<td><%= unit.condition %></td>
 	<td><%= number_to_currency unit.purchase_price %></td>
 	<td><%= number_to_currency unit.sale_price if unit.sale_price %></td>
 	<td class="nowrap">
+		<%= link_to barcode_item_unit_path(unit.item, unit), "target" => "_blank", class: "pure-button icon-button" do %>
+			<%= fa_icon "barcode" %>
+		<% end %>
 		<%= link_to edit_item_unit_path(@item, unit), class: "pure-button icon-button" do %>
 			<%= fa_icon "pencil" %>
 		<% end %>
