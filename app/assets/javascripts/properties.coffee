@@ -13,6 +13,11 @@
 	$('.contract-input').prepend('<a target="_blank" class="pure-button" id="view_contract" href="'+event.fpfile.url+'">View</a>')
 
 $(document).ready ->
+	if $('#property_price')[0]
+		$('#property_price').autoNumeric 'init'
+	if $('#property_deposit')[0]
+		$('#property_deposit').autoNumeric 'init'
+
 	# Update property end date when start date changes
 	$('#property_start_date').on 'keyup change', ->
 		start_date = $(this).val().split('/')

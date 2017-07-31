@@ -10,8 +10,8 @@
     <%= f.input :sqft, error: false %>
     <%= f.input :start_date, as: :string, error: false, input_html: { value: @property.start_date.blank? ? nil : @property.start_date.strftime("%m/%d/%Y") } %>
     <%= f.input :end_date, as: :string, error: false, input_html: { value: @property.end_date.blank? ? nil : @property.end_date.strftime("%m/%d/%Y") } %>
-    <%= f.input :price, error: false %>
-    <%= f.input :deposit, error: false %>
+    <%= f.input :price, as: :string, error: false, input_html: { "data-an-default" => @property.price } %>
+    <%= f.input :deposit, as: :string, error: false, input_html: { "data-an-default" => @property.deposit } %>
     <%= f.input :user_id, as: :select, collection: User.active.agents, label: "Agent", selected: @property.user ? @property.user.id : nil, include_blank: "", error: false %>
     <div class="input payment-input">
       <%= label_tag :payment %>
