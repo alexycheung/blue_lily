@@ -97,7 +97,8 @@ class ItemsController < ApplicationController
 				:category_id,
 				:height,
 				:width,
-				:length
+				:length,
+				:vendor_item_number,
 			)
 		end
 end

@@ -5,6 +5,7 @@
       <%= f.filepicker_field :photo, button_text: item_photo(@item), button_class: "upload-photo pure-button subtle-button", onchange: "onItemPhotoUpload(event)" %>
     </div>
     <%= f.input :name, error: false, autofocus: true %>
+    <%= f.input :vendor_item_number, error: false %>
     <%= f.input :color, error: false %>
     <%= f.input :description, error: false %>
     <%= f.input :size, error: false, as: :select, collection: ["S", "M", "L"] %>
