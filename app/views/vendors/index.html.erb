@@ -1,0 +1,15 @@
+<%= link_to new_vendor_path, class: "pure-button pure-button-primary medium round", id: "add-vendor-button" do %>
+	<%= fa_icon 'building', class: 'left-icon' %> Add Vendor
+<% end %>
+
+<table class="pure-table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render @vendors %>
+	</tbody>
+</table>

@@ -1,0 +1,13 @@
+<tr>
+	<td>
+		<%= vendor.name %>
+	</td>
+	<td class="nowrap">
+		<%= link_to edit_vendor_path(vendor), class: "pure-button icon-button" do %>
+			<%= fa_icon "pencil" %>
+		<% end %>
+		<%= link_to vendor, method: :delete, data: { confirm: "Sure you want to delete this vendor? "}, class: "pure-button icon-button" do %>
+			<%= fa_icon "trash" %>
+		<% end %>
+	</td>
+</tr>

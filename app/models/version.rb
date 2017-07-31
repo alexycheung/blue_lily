@@ -101,6 +101,27 @@ class Version < ApplicationRecord
 					end
 				end
 			end
+		elsif version.item_type == "Vendor"
+			vendor = Vendor.find(version.item_id)
+			if version.event == "create"
+				vendor.update_attributes(destroyed_at: DateTime.now)
+			elsif version.event == "update"
+				changeset = vendor.versions.find(version.id).changeset
+				if changeset["destroyed_at"]
+					if changeset["destroyed_at"][0]
+						vendor.update_attributes(destroyed_at: DateTime.now)
+					else
+						vendor.update_attributes(destroyed_at: nil)
+					end
+				else
+					changeset.to_a.each do |change|
+						field = change[0]
+						old_value = change[1][0]
+						vendor[field] = old_value
+					end
+					vendor.save
+				end
+			end
 		elsif version.item_type == "Reservation"
 			reservation = Reservation.find(version.item_id)
 			if version.event == "create"

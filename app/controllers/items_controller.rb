@@ -7,24 +7,28 @@ class ItemsController < ApplicationController
 		@colors = []
 		@conditions = []
 		@categories = []
+		@vendors = []
 		@sizes = []
 
 		Item.active.by_date.each do |item|
 			if [nil, item.color].include?(params[:color]) &&
 				 [nil, item.condition].include?(params[:condition]) &&
 				 [nil, item.category.name].include?(params[:category]) &&
-				 [nil, item.size].include?(params[:size])
+				 [nil, item.size].include?(params[:size]) &&
+				 [nil, item.vendor.name].include?(params[:vendor])
 				@items << item
 			end
 			@colors << item.color
 			@conditions << item.condition
 			@categories << item.category.name
+			@vendors << item.vendor.name
 			@sizes << item.size
 		end
 
 		@colors = @colors.uniq
 		@conditions = @conditions.uniq
 		@categories = @categories.uniq
+		@vendors = @vendors.uniq
 		@sizes = @sizes.uniq
 	end
 
@@ -80,6 +84,6 @@ class ItemsController < ApplicationController
 	private
 
 		def item_params
-			params.require(:item).permit(:name, :photo, :size, :condition, :purchase_price, :sale_price, :description, :company, :color, :category_id)
+			params.require(:item).permit(:vendor_id, :name, :photo, :size, :condition, :purchase_price, :sale_price, :description, :color, :category_id)
 		end
 end

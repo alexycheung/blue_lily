@@ -7,6 +7,9 @@
 	<td>
 		<%= item.name %>
 	</td>
+	<td>
+		<%= item.vendor.name if item.vendor_id %>
+	</td>
 	<td><%= item.size %></td>
 	<td><%= item.color %></td>
 	<td><%= item.category.name %></td>

@@ -8,7 +8,7 @@
     <%= f.input :color, error: false %>
     <%= f.input :description, error: false %>
     <%= f.input :size, error: false, as: :select, collection: ["S", "M", "L"] %>
-    <%= f.input :company, error: false %>
+    <%= f.input :vendor_id, error: false, as: :select, collection: Vendor.active.by_name, selected: @item.vendor ? @item.vendor.id : nil, include_blank: "" %>
     <%= f.input :condition, error: false, as: :select, collection: ["new", "like new", "very good", "good", "acceptable", "unacceptable"] %>
     <%= f.input :category_id, error: false, as: :select, collection: @categories, include_blank: "", selected: @item.category ? @item.category.id : nil %>
     <%= f.input :purchase_price, error: false %>

@@ -7,10 +7,11 @@ class Item < ApplicationRecord
 	validates :condition, presence: true
 	validates :purchase_price, presence: true
 	validates :description, presence: true
-	validates :company, presence: true
 	validates :category_id, presence: true, numericality: true
+	validates :vendor_id, presence: true, numericality: true
 
 	belongs_to :category
+	belongs_to :vendor
 	has_many :reservations
 	has_many :properties, through: :reservations
 

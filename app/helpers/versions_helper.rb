@@ -118,6 +118,32 @@ module VersionsHelper
 					end
 				end
 			end
+		elsif version.item_type == "Vendor"
+			vendor = Vendor.find(version.item_id)
+			if version.event == "create"
+				return "created vendor <b>#{vendor.name}</b>".html_safe
+			elsif version.event == "update"
+				changeset = vendor.versions.find(version.id).changeset
+				if changeset["destroyed_at"]
+					if changeset["destroyed_at"][0]
+						return "retored vendor <b>#{vendor.name}</b>".html_safe
+					else
+						return "destroyed vendor <b>#{vendor.name}</b>".html_safe
+					end
+				else
+					updated_fields = "updated "
+					changeset.to_a.each_with_index do |change, index|
+						field = change[0]
+						old_value = change[1][0]
+						new_value = change[1][1]
+						unless [nil, ""].include?(old_value) && [nil, ""].include?(new_value)
+							updated_fields += ", " if index != 0
+							updated_fields += "vendor #{field} from <b>#{old_value ? old_value : 'nil'}</b> to <b>#{new_value ? new_value : 'nil'}</b>"
+						end
+					end
+					return updated_fields.html_safe
+				end
+			end
 		elsif version.item_type == "Reservation"
 			reservation = Reservation.find(version.item_id)
 			item = reservation.item

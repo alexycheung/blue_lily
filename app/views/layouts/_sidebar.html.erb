@@ -22,6 +22,10 @@
 			<label>Users</label>
 			<span class="count"><%= User.active.count %></span>
 		<% end %>
+		<%= link_to vendors_path, class: "#{active_path(vendors_path)}", "data-push" => "true", "data-target" => "#yield-container" do %>
+			<label>Vendors</label>
+			<span class="count"><%= Vendor.active.count %></span>
+		<% end %>
 	</div>
 	<div class="divider"></div>
 	<div class="container">

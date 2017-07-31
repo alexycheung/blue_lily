@@ -7,6 +7,9 @@
 	<td>
 		<%= link_to item.name, reservations_path(item_id: item.id), class: "pure-link" %>
 	</td>
+	<td>
+		<%= item.vendor.name if item.vendor_id %>
+	</td>
 	<td><%= item.size %></td>
 	<td><%= item.color %></td>
 	<td><%= item.category.name %></td>

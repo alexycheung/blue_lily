@@ -25,4 +25,6 @@ Rails.application.routes.draw do
 
   resources :versions, only: [:index]
   post '/versions/:id/undo', to: 'versions#undo', as: 'undo_version'
+
+  resources :vendors
 end
