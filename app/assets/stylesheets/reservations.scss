@@ -5,19 +5,19 @@
 
 #reservations-index {
 	h4 {
-		overflow: auto;
-		margin-top: 0;
+		margin-top: 6px;
+		margin: 0 20px 20px 0;
 		display: inline-block;
 		font-size: 12px;
-		margin-bottom: 20px;
+		float: left;
+		text-transform: uppercase;
 
 		img {
-			float: left;
+			margin-right: 10px;
 		}
 
-		.item-name {
-			float: left;
-			margin: 11px 0.5em;
+		.unit-id {
+			color: #8C99AB;
 		}
 	}
 }

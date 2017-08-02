@@ -1,5 +1,9 @@
 <div id="units-index">
-	<h4><%= @item.name %> Units</h4>
+	<h4>
+		<%= filepicker_image_tag @item.photo, fit: 'crop', w: 40, h: 40 %>
+		<%= @item.name %> Units 
+		<span class="vendor-item-number">(VENDOR ITEM #<%= @item.vendor_item_number %>)</span>
+	</h4>
 
 	<%= link_to new_item_unit_path(@item, @unit), class: "pure-button pure-button-primary medium round", id: "add-unit-button" do %>
 		<%= fa_icon 'plus', class: 'left-icon' %> 
@@ -9,6 +13,7 @@
 	<table class="pure-table">
 		<thead>
 			<tr>
+				<th>ID</th>
 				<th>Status</th>
 				<th>Condition</th>
 				<th>Purchase Price</th>

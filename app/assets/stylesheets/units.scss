@@ -6,16 +6,23 @@
 #units-index {
 	h4 {
 		margin-top: 6px;
-		margin-bottom: 20px;
-		margin-right: 20px;
+		margin: 0 20px 20px 0;
 		display: inline-block;
 		font-size: 12px;
 		float: left;
 		text-transform: uppercase;
+
+		img {
+			margin-right: 10px;
+		}
+
+		.vendor-item-number {
+			color: #8C99AB;
+		}
 	}
 
 	#add-unit-button {
-		margin-bottom: 20px;
+		margin-top: 5px;
 	}
 }
 
