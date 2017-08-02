@@ -2,7 +2,8 @@
 	<% @property.reservations.each do |reservation| %>
 		<div class="barcode">
 			<%= unit_barcode(reservation.unit) %>
-			<div class="identification"><%= reservation.unit.id %> - <%= truncate(reservation.unit.item.name, length: 40) %></div>
+			<div class="unit-id">UNIT #<%= reservation.unit.id %></div>
+			<div class="item-name"><%= truncate(reservation.unit.item.name, length: 40) %></div>
 		</div>
 	<% end %>
 </div>

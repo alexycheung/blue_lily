@@ -111,9 +111,16 @@ td {
 		height: 96px;
 		float: left;
 
-		.identification {
-			font-size: 10px;
-			padding: 0 10px;
+		.unit-id {
+			font-size: 9px;
+			font-weight: 500;
+		}
+
+		.item-name {
+			font-size: 9px;
+			font-weight: 500;
+			margin-top: 2px;
+			color: #8C99AB;
 		}
 	}
 }
