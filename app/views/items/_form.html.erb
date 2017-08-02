@@ -25,19 +25,8 @@
         <%= f.input :description, error: false %>
       </div>
       <div class="pure-u-1-4">
-        <%= f.input :height, error: false %>
+        <%= f.input :dimensions, error: false %>
       </div>
-      <div class="pure-u-1-4">
-        <%= f.input :length, error: false %>
-      </div>
-      <div class="pure-u-1-4">
-        <%= f.input :width, error: false %>
-      </div>
-    </div>
-
-    <legend></legend>
-
-    <div class="pure-g form-inputs">
       <div class="pure-u-1-4">
         <%= f.input :vendor_id, error: false, as: :select, collection: Vendor.active.by_name, selected: @item.vendor ? @item.vendor.id : nil, include_blank: "" %>
       </div>
