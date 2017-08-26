@@ -1,7 +1,11 @@
 <div id="reservations-index">
 	<h4>
-		<%= filepicker_image_tag @unit.item.photo, fit: 'crop', h: 40 %>
-		<%= @unit.item.name %> Reservations
+		<% if @unit.item.photo && @unit.item.photo != "" %>
+			<%= filepicker_image_tag @unit.item.photo, fit: 'crop', h: 40 %>
+		<% else %>
+			<span class="image-placeholder"></span>
+		<% end %>
+		<span class="item-name"><%= @unit.item.name %> Reservations</span>
 		<span class="unit-id">(UNIT #<%= @unit.id %>)</span>
 	</h4>
 	<table class="pure-table">

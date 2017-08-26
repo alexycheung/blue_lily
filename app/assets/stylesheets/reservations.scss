@@ -12,8 +12,18 @@
 		float: left;
 		text-transform: uppercase;
 
-		img {
+		img, .image-placeholder {
 			margin-right: 10px;
+			height: 40px;
+			width: 40px;
+			background: #f8f8f8;
+			display: inline-block;
+			float: left;
+		}
+
+		.item-name, .unit-id {
+			display: inline-block;
+			margin-top: 10px;
 		}
 
 		.unit-id {

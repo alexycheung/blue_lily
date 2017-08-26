@@ -22,9 +22,6 @@
 	<td><%= item.category.name %></td>
 	<td><%= item.units.active.count %></td>
 	<td class="nowrap">
-		<%= link_to reservations_path(item_id: item.id), class: "pure-button icon-button" do %>
-			<%= fa_icon "calendar" %>
-		<% end %>
 		<%= link_to item_units_path(item), class: "pure-button icon-button" do %>
 			<%= fa_icon "plus" %>
 		<% end %>
