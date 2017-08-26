@@ -161,12 +161,17 @@ class PropertiesController < ApplicationController
 				flash.now[:alert] = "Unit ##{@unit.id} was deleted"
 			elsif @unit.reservations.active.where(property_id: @property.id).any? || !@unit.reserved_for_property(@property.start_date, @property.end_date)
 				# reserve and checkout unit for property
-				@reservation = Reservation.new(
-					unit_id: @unit.id,
-					property_id: @property.id,
-					checkout: Date.today,
-				)
-				@reservation.save
+				if Reservation.where(unit_id: @unit.id, property_id: @property.id).any?
+					@reservation = Reservation.where(unit_id: @unit.id, property_id: @property.id).first
+					@reservation.update_attributes(created_at: DateTime.now, checkout: Date.today)
+				else
+					@reservation = Reservation.new(
+						unit_id: @unit.id,
+						property_id: @property.id,
+						checkout: Date.today,
+					)
+					@reservation.save
+				end
 				flash.now[:notice] = "Reserved and checked out unit ##{@unit.id}"
 			else
 				flash.now[:alert] = "Unit ##{params[:unit_id]} is not available for this property's dates"

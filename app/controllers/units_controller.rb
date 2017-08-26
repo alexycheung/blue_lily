@@ -24,7 +24,7 @@ class UnitsController < ApplicationController
 		end
 
 		if unit_count == quantity
-			flash[:notice] = "Created #{'unit'.pluralize(unit_count)} for #{@item.name}"
+			flash[:notice] = "Created unit(s) for #{@item.name}"
 			redirect_to item_units_path(@item)
 		else
 			flash[:alert] = @unit.errors.full_messages.first
