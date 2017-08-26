@@ -1,8 +1,14 @@
 <%= simple_form_for [@item, @unit], html: { class: "pure-form pure-form-stacked" } do |f| %>
 	<div class="form-inputs">
-		<%= f.input :condition, error: false, as: :select, collection: ["new", "like new", "very good", "good", "acceptable", "unacceptable"] %>
+		<%= f.input :condition, error: false, as: :select, collection: ["new", "like new", "very good", "good", "acceptable", "unacceptable"], input_html: { selected: @unit.condition } %>
 		<%= f.input :purchase_price, as: :string, error: false, input_html: { "data-an-default" => @unit.purchase_price  } %>
 		<%= f.input :sale_price, as: :string, error: false, input_html: { "data-an-default" => @unit.sale_price } %>
+		<% if action_name == "new" || action_name == "create" %>
+			<div class="input" %>
+				<%= label_tag :quantity %>
+				<%= number_field_tag :quantity, 1 %>
+			</div>
+		<% end %>
 	</div>
 	<div class="form-actions">
 		<%= f.button :submit, "Save", class: "pure-button pure-button-primary large round" %>

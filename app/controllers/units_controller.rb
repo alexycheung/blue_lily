@@ -15,13 +15,20 @@ class UnitsController < ApplicationController
 
 	def create
 		@item = Item.find(params[:item_id])
-		@unit = @item.units.build(unit_params)
-		if @unit.save
-			flash[:notice] = "Created unit for #{@item.name}"
+		quantity = params[:quantity] ? params[:quantity].to_i : 1
+		unit_count = 0
+
+		(0...quantity).each do |count|
+			@unit = @item.units.build(unit_params)
+			unit_count += 1 if @unit.save
+		end
+
+		if unit_count == quantity
+			flash[:notice] = "Created #{'unit'.pluralize(unit_count)} for #{@item.name}"
 			redirect_to item_units_path(@item)
 		else
 			flash[:alert] = @unit.errors.full_messages.first
-			redirect_to edit_item_unit_path(@item, @unit)
+			render "new"
 		end
 	end
 
