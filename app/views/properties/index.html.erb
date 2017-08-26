@@ -10,9 +10,9 @@
 		</a>
 		<ul class="dropdown-menu" aria-labelledby="city-trigger">
 			<% @cities.each do |city| %>
-				<li><%= link_to city, properties_path(city: city) %></li>
+				<li><%= link_to city, properties_path(city: city, state: params[:state], agent: params[:agent], status: params[:status]) %></li>
 			<% end %>
-			<li><%= link_to "all cities", properties_path(city: nil) %></li>
+			<li><%= link_to "all cities", properties_path(city: nil, state: params[:state], agent: params[:agent], status: params[:status]) %></li>
 		</ul>
 	</div>
 
@@ -23,9 +23,9 @@
 		</a>
 		<ul class="dropdown-menu" aria-labelledby="state-trigger">
 			<% @states.each do |state| %>
-				<li><%= link_to state, properties_path(state: state) %></li>
+				<li><%= link_to state, properties_path(state: state, city: params[:city], agent: params[:agent], status: params[:status]) %></li>
 			<% end %>
-			<li><%= link_to "all states", properties_path(state: nil) %></li>
+			<li><%= link_to "all states", properties_path(state: nil, city: params[:city], agent: params[:agent], status: params[:status]) %></li>
 		</ul>
 	</div>
 
@@ -36,9 +36,9 @@
 		</a>
 		<ul class="dropdown-menu" aria-labelledby="agent-trigger">
 			<% @agents.each do |agent| %>
-				<li><%= link_to agent, properties_path(agent: agent) %></li>
+				<li><%= link_to agent, properties_path(agent: agent, city: params[:city], state: params[:state], status: params[:status]) %></li>
 			<% end %>
-			<li><%= link_to "all agents", properties_path(agent: nil) %></li>
+			<li><%= link_to "all agents", properties_path(agent: nil, city: params[:city], state: params[:state], status: params[:status]) %></li>
 		</ul>
 	</div>
 
@@ -49,9 +49,9 @@
 		</a>
 		<ul class="dropdown-menu" aria-labelledby="status-trigger">
 			<% @statuses.each do |status| %>
-				<li><%= link_to status, properties_path(status: status) %></li>
+				<li><%= link_to status, properties_path(status: status, city: params[:city], state: params[:state], agent: params[:agent]) %></li>
 			<% end %>
-			<li><%= link_to "all statuses", properties_path(status: nil) %></li>
+			<li><%= link_to "all statuses", properties_path(status: nil, city: params[:city], state: params[:state], agent: params[:agent]) %></li>
 		</ul>
 	</div>
 </div>
