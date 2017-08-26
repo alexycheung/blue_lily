@@ -7,7 +7,6 @@ class PropertiesController < ApplicationController
 		@cities = []
 		@states = []
 		@agents = []
-		@statuses = []
 
 		Property.active.by_start_date.each do |property|
 			if [nil, property.city].include?(params[:city]) &&
@@ -19,13 +18,12 @@ class PropertiesController < ApplicationController
 			@cities << property.city
 			@states << property.state
 			@agents << property.user.name if property.user
-			@statuses << property.status if property.status
 		end
 
 		@cities = @cities.uniq
 		@states = @states.uniq
 		@agents = @agents.uniq
-		@statuses = @statuses.uniq
+		@statuses = ["pending", "open", "closed"]
 	end
 
 	def new

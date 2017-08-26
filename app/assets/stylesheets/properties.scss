@@ -8,28 +8,6 @@
 }
 
 
-/* _property */
-
-td {
-	.status {
-		@include scale(0.7);
-		color: white;
-
-		&.upcoming {
-			color: #FFA500;
-		}
-
-		&.started {
-			color: $primary;
-		}
-	}
-
-	&.actions {
-		text-align: right;
-	}
-}
-
-
 /* assign */
 
 #properties-assign {

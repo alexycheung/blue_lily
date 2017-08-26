@@ -40,11 +40,11 @@ class Property < ApplicationRecord
 		if !property.start_date || !property.end_date
 			return nil
 		elsif Date.today <= property.start_date
-			return "upcoming"
+			return "pending"
 		elsif Date.today <= property.end_date
-			return "started"
+			return "open"
 		else
-			return "ended"
+			return "closed"
 		end
 	end
 end
