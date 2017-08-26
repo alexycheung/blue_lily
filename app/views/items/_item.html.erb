@@ -1,7 +1,11 @@
-<tr>
+<tr class="item">
 	<td class="nowrap">
-		<%= link_to zoom_path(item), remote: true do %>
-			<%= filepicker_image_tag item.photo, fit: 'crop', w: 40, h: 40 %>
+		<% if item.photo && item.photo != "" %>
+			<%= link_to zoom_path(item), remote: true do %>
+				<%= filepicker_image_tag item.photo, fit: 'crop', w: 40, h: 40 %>
+			<% end %>
+		<% else %>
+			<div class="image-placeholder"></div>
 		<% end %>
 	</td>
 	<td>

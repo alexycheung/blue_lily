@@ -1,7 +1,13 @@
 <div id="units-index">
 	<h4>
-		<%= filepicker_image_tag @item.photo, fit: 'crop', w: 40, h: 40 %>
-		<%= @item.name %> Units 
+		<% if @item.photo && @item.photo != "" %>
+			<%= filepicker_image_tag @item.photo, fit: 'crop', w: 40, h: 40 %>
+		<% else %>
+			<span class="image-placeholder"></span>
+		<% end %>
+		<span class="item-name">
+			<%= @item.name %> Units 
+		</span>
 		<span class="vendor-item-number">(VENDOR ITEM #<%= @item.vendor_item_number %>)</span>
 	</h4>
 
