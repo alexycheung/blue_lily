@@ -1,4 +1,4 @@
-<tr class="item" id="item_<%= item.id %>">
+<tr class="unit" id="unit_<%= unit.id %>">
 	<td class="nowrap">
 		<% if item.photo && item.photo != "" %>
 			<%= link_to zoom_path(item), remote: true do %>
@@ -7,6 +7,9 @@
 		<% else %>
 			<div class="image-placeholder"></div>
 		<% end %>
+	</td>
+	<td>
+		<%= unit.id %>
 	</td>
 	<td>
 		<%= link_to item.name, reservations_path(unit_id: unit.id), class: "pure-link" %>

@@ -4,5 +4,5 @@
 
 $(document).ready ->
 	$('html').on 'click', '#close-overlay svg', ->
-		$('#overlay').remove()
+		$('.overlay').remove()
 		return

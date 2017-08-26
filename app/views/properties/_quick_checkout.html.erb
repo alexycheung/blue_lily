@@ -1,0 +1,18 @@
+<div class="overlay" id="properties-quick-checkout">
+	<div class="modal">
+		<div class="modal-header">Quick Checkout</div>
+		<%= form_tag quick_checkout_property_path(@property), remote: true, class: "pure-form" do %>
+			<div class="form-inputs">
+				<div class="input">
+					<%= number_field_tag :unit_id, nil, placeholder: "Scan unit..." %>
+				</div>
+			</div>
+			<div class="form-actions">
+				<%= button_tag "Checkout", class: "pure-button pure-button-primary" %>
+			</div>
+		<% end %>
+	</div>
+	<span id="hide-overlay">
+		<%= inline_svg 'cancel.svg' %>
+	</span>
+</div>

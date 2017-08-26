@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/properties/retrieve', to: 'properties#retrieve', as: 'retrieve_property'
   get '/properties/zillow', to: 'properties#zillow', as: 'zillow_property'
   get '/properties/:id/barcodes', to: 'properties#barcodes', as: 'barcodes_property'
+  post '/properties/:id/quick_checkout', to: 'properties#quick_checkout', as: 'quick_checkout_property'
 
   resources :items, except: [:show] do
     resources :units

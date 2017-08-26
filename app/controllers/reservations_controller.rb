@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
 	def create
 		unit = Unit.find(params[:unit_id])
 		property = Property.find(params[:property_id])
-		@reservation = Reservation.create(
+		@reservation = Reservation.new(
 			unit_id: unit.id,
 			property_id: property.id,
 		)

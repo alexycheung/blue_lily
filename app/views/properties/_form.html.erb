@@ -15,14 +15,14 @@
     <%= f.input :user_id, as: :select, collection: User.active.agents, label: "Agent", selected: @property.user ? @property.user.id : nil, include_blank: "", error: false %>
     <div class="input payment-input">
       <%= label_tag :payment %>
-      <% if @property.payment %>
+      <% if @property.payment && @property.payment != "" %>
         <%= link_to "View", @property.payment, "target" => "_blank", class: "pure-button", id: "view_payment" %>
       <% end %>
       <%= f.filepicker_field :payment, button_text: property_payment(@property), button_class: "upload-photo upload-payment pure-button subtle-button", onchange: "onPropertyPaymentUpload(event)" %>
     </div>
     <div class="input contract-input">
       <%= label_tag :contract %>
-      <% if @property.contract %>
+      <% if @property.contract && @property.contract != "" %>
         <%= link_to "View", @property.contract, "target" => "_blank", class: "pure-button", id: "view_contract" %>
       <% end %>
       <%= f.filepicker_field :contract, button_text: property_contract(@property), button_class: "upload-photo upload-contract pure-button subtle-button", onchange: "onPropertyContractUpload(event)" %>

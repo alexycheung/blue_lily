@@ -13,7 +13,7 @@ module PropertiesHelper
 
 	# Return payment photo or camera icon
 	def property_payment(property)
-		if property.payment
+		if property.payment && property.payment != ""
 			return "#{filepicker_image_tag property.payment, fit: 'crop', w: 200, h: 200}"
 		else
 			return "#{fa_icon 'camera'}"
@@ -22,7 +22,7 @@ module PropertiesHelper
 
 	# Return contract photo or camera icon
 	def property_contract(property)
-		if property.contract
+		if property.contract && property.contract != ""
 			return "#{filepicker_image_tag property.contract, fit: 'crop', w: 200, h: 200}"
 		else
 			return "#{fa_icon 'camera'}"

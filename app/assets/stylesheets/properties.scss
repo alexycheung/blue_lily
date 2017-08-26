@@ -12,15 +12,19 @@
 
 #properties-assign {
 	h4 {
-		margin-top: 0;
-		margin-bottom: 20px;
+		margin-top: -10px;
+		margin-bottom: 27px;
 		display: inline-block;
 		font-size: 12px;
 	}
 
+	#quick-checkout-button {
+		margin-left: 10px;
+	}
+
 	#filter {
 		float: right;
-		margin-top: -2px;
+		margin-top: 4px;
 
 		.dropdown {
 			display: inline-block;
@@ -44,7 +48,7 @@
 
 #search-properties-assign {
 	float: right;
-	margin-top: -12px;
+	margin-top: -7px;
 	margin-left: 15px;
 
 	.form-inputs {
@@ -103,6 +107,7 @@
 	}
 }
 
+
 /* _form */
 
 .payment-input, .contract-input {
@@ -112,5 +117,48 @@
 		position: absolute;
 		top: 30px;
 		left: 5px;
+	}
+}
+
+
+/* _quick_checkout */
+
+#properties-quick-checkout {
+	display: none;
+	
+	.modal {
+		.notice, .alert {
+			@include border-radius(3px);
+			padding: 10px;
+			margin-bottom: 10px;
+		}
+
+		.notice {
+			background: $primary;
+			color: white;
+		}
+
+		.alert {
+			background: $error;
+			color: white;
+		}
+
+		.form-inputs {
+			.input {
+				padding: 0;
+
+				input {
+					width: 100%;
+					padding: 10px;
+				}
+			}
+		}
+
+		.form-actions {
+			button {
+				width: 100%;
+				padding: 10px;
+			}
+		}
 	}
 }

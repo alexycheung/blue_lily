@@ -1,7 +1,10 @@
 <div id="properties-assign">
+	<%= render partial: "properties/quick_checkout" %>
+	
 	<h4>
 		<%= @property.address %>, <%= @property.city %>, <%= @property.state %>
 	</h4>
+	<span class="pure-button pure-button-primary medium round" id="quick-checkout-button"><%= fa_icon "plus" %> Quick Checkout</span>
 
 	<%= form_tag assign_property_path(@property), method: :get, id: "search-properties-assign", class: "pure-form pure-form-stacked" do %>
 	<div class="form-inputs">
@@ -90,6 +93,7 @@
 		<thead>
 			<tr>
 				<th></th>
+				<th>ID</th>
 				<th>Name</th>
 				<th>Vendor</th>
 				<th>Vendor Item Number</th>

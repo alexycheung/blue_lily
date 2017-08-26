@@ -148,6 +148,35 @@ class PropertiesController < ApplicationController
 		@property = Property.find(params[:id])
 	end
 
+	def quick_checkout
+		@property = Property.find(params[:id])
+		if !params[:unit_id] || params[:unit_id] == ""
+			# check if unit id is valid
+			flash.now[:alert] = "Please enter a valid unit ID"
+		elsif !Unit.find_by_id(params[:unit_id])
+			# check if unit is valid
+			flash.now[:alert] = "There is no unit with ID ##{params[:unit_id]}"
+		elsif @unit = Unit.find_by_id(params[:unit_id])
+			if @unit.destroyed_at
+				flash.now[:alert] = "Unit ##{@unit.id} was deleted"
+			elsif @unit.reservations.active.where(property_id: @property.id).any? || !@unit.reserved_for_property(@property.start_date, @property.end_date)
+				# reserve and checkout unit for property
+				@reservation = Reservation.new(
+					unit_id: @unit.id,
+					property_id: @property.id,
+					checkout: Date.today,
+				)
+				@reservation.save
+				flash.now[:notice] = "Reserved and checked out unit ##{@unit.id}"
+			else
+				flash.now[:alert] = "Unit ##{params[:unit_id]} is not available for this property's dates"
+			end
+		end
+		respond_to do |format|
+			format.js
+		end
+	end
+
 	private
 
 		def property_params

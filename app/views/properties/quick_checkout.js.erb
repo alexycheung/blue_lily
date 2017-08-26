@@ -1,0 +1,16 @@
+if ($(".notice")[0]) {
+	$(".notice").remove();
+}
+
+if ($(".alert")[0]) {
+	$(".alert").remove();
+}
+
+$("#properties-quick-checkout #unit_id").val('').focus();
+
+<% if flash[:notice] %>
+	$("#properties-quick-checkout form").prepend("<div class='notice'><%= flash[:notice] %></div>");
+	$("#unit_<%= @unit.id %>").replaceWith("<%= j render partial: 'units/reserve', locals: { unit: @unit, item: @unit.item } %>");
+<% elsif flash[:alert] %>
+	$("#properties-quick-checkout form").prepend("<div class='alert'><%= flash[:alert] %></div>");
+<% end %>
