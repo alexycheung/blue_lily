@@ -1,31 +1,66 @@
 <%= simple_form_for @property, html: { class: "pure-form pure-form-stacked" } do |f| %>
   <div class="form-inputs">
-    <%= f.input :zillow_url, error: false, label: "Zillow URL", autofocus: true %>
-    <%= f.input :address, error: false %>
-    <%= f.input :city, error: false %>
-    <%= f.input :state, error: false, as: :select, collection: ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"] %>
-    <%= f.input :zip, error: false %>
-    <%= f.input :bedrooms, error: false %>
-    <%= f.input :bathrooms, error: false %>
-    <%= f.input :sqft, error: false %>
-    <%= f.input :start_date, as: :string, error: false, input_html: { value: @property.start_date.blank? ? nil : @property.start_date.strftime("%m/%d/%Y") } %>
-    <%= f.input :end_date, as: :string, error: false, input_html: { value: @property.end_date.blank? ? nil : @property.end_date.strftime("%m/%d/%Y") } %>
-    <%= f.input :price, as: :string, error: false, input_html: { "data-an-default" => @property.price } %>
-    <%= f.input :deposit, as: :string, error: false, input_html: { "data-an-default" => @property.deposit } %>
-    <%= f.input :user_id, as: :select, collection: User.active.agents, label: "Agent", selected: @property.user ? @property.user.id : nil, include_blank: "", error: false %>
-    <div class="input payment-input">
-      <%= label_tag :payment %>
-      <% if @property.payment && @property.payment != "" %>
-        <%= link_to "View", @property.payment, "target" => "_blank", class: "pure-button", id: "view_payment" %>
-      <% end %>
-      <%= f.filepicker_field :payment, button_text: property_payment(@property), button_class: "upload-photo upload-payment pure-button subtle-button", onchange: "onPropertyPaymentUpload(event)" %>
+
+  <div class="pure-g">
+    <div class="pure-u-1-4">
+      <%= f.input :zillow_url, error: false, label: "Zillow URL", autofocus: true %>
     </div>
-    <div class="input contract-input">
-      <%= label_tag :contract %>
-      <% if @property.contract && @property.contract != "" %>
-        <%= link_to "View", @property.contract, "target" => "_blank", class: "pure-button", id: "view_contract" %>
-      <% end %>
-      <%= f.filepicker_field :contract, button_text: property_contract(@property), button_class: "upload-photo upload-contract pure-button subtle-button", onchange: "onPropertyContractUpload(event)" %>
+    <div class="pure-u-1-4">
+      <%= f.input :bedrooms, error: false %>
+    </div>
+    <div class="pure-u-1-4">
+      <%= f.input :bathrooms, error: false %>
+    </div>
+    <div class="pure-u-1-4">
+      <%= f.input :sqft, error: false %>
+    </div>
+
+    <div class="pure-u-1-4">
+      <%= f.input :address, error: false %>
+    </div>
+    <div class="pure-u-1-4">
+      <%= f.input :city, error: false %>
+    </div>
+    <div class="pure-u-1-4">
+       <%= f.input :state, error: false, as: :select, collection: ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"] %>
+    </div>
+    <div class="pure-u-1-4">
+      <%= f.input :zip, error: false %>
+    </div>
+
+    <div class="pure-u-1-4">
+      <%= f.input :start_date, as: :string, error: false, input_html: { value: @property.start_date.blank? ? nil : @property.start_date.strftime("%m/%d/%Y") } %>
+    </div>
+    <div class="pure-u-1-4">
+      <%= f.input :end_date, as: :string, error: false, input_html: { value: @property.end_date.blank? ? nil : @property.end_date.strftime("%m/%d/%Y") } %>
+    </div>
+    <div class="pure-u-1-4">
+      <%= f.input :price, as: :string, error: false, input_html: { "data-an-default" => @property.price } %>
+    </div>
+    <div class="pure-u-1-4">
+      <%= f.input :deposit, as: :string, error: false, input_html: { "data-an-default" => @property.deposit } %>
+    </div>
+
+    <div class="pure-u-1-4">
+      <div class="input payment-input">
+        <%= label_tag :payment %>
+        <% if @property.payment && @property.payment != "" %>
+          <%= link_to "View", @property.payment, "target" => "_blank", class: "pure-button", id: "view_payment" %>
+        <% end %>
+        <%= f.filepicker_field :payment, button_text: property_payment(@property), button_class: "upload-photo upload-payment pure-button subtle-button", onchange: "onPropertyPaymentUpload(event)" %>
+      </div>
+    </div>
+    <div class="pure-u-1-4">
+      <div class="input contract-input">
+        <%= label_tag :contract %>
+        <% if @property.contract && @property.contract != "" %>
+          <%= link_to "View", @property.contract, "target" => "_blank", class: "pure-button", id: "view_contract" %>
+        <% end %>
+        <%= f.filepicker_field :contract, button_text: property_contract(@property), button_class: "upload-photo upload-contract pure-button subtle-button", onchange: "onPropertyContractUpload(event)" %>
+      </div>
+    </div>
+    <div class="pure-u-1-4">
+      <%= f.input :user_id, as: :select, collection: User.active.agents, label: "Agent", selected: @property.user ? @property.user.id : nil, include_blank: "", error: false %>
     </div>
   </div>
 
