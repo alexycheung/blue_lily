@@ -4,33 +4,6 @@
 /* index */
 
 #units-index {
-	h4 {
-		margin-top: 6px;
-		margin: 0 20px 20px 0;
-		display: inline-block;
-		font-size: 12px;
-		float: left;
-		text-transform: uppercase;
-
-		img, .image-placeholder {
-			margin-right: 10px;
-			height: 40px;
-			width: 40px;
-			background: #f8f8f8;
-			display: inline-block;
-			float: left;
-		}
-
-		.item-name, .vendor-item-number {
-			display: inline-block;
-			margin-top: 10px;
-		}
-
-		.vendor-item-number {
-			color: #8C99AB;
-		}
-	}
-
 	#add-unit-button {
 		margin-top: 5px;
 	}
@@ -69,6 +42,7 @@
 	}
 }
 
+
 /* _reserve */
 
 .unit {
@@ -77,4 +51,11 @@
 		width: 40px;
 		background: #f8f8f8;
 	}
+}
+
+
+/* new */
+
+#new_unit {
+	clear: both;	
 }
