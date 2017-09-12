@@ -2,8 +2,9 @@
   <div class="form-inputs">
 
   <div class="pure-g">
-    <div class="pure-u-1-4">
+    <div class="pure-u-1-4" id="zillow-url-container">
       <%= f.input :zillow_url, error: false, label: "Zillow URL", autofocus: true %>
+      <%= link_to "open", @property.zillow_url, "target" => "_blank", class: "pure-button", id: "open-zillow-url" if @property.zillow_url && @property.zillow_url != "" %>
     </div>
     <div class="pure-u-1-4">
       <%= f.input :bedrooms, error: false %>
@@ -45,7 +46,7 @@
       <div class="input payment-input">
         <%= label_tag :payment %>
         <% if @property.payment && @property.payment != "" %>
-          <%= link_to "View", @property.payment, "target" => "_blank", class: "pure-button", id: "view_payment" %>
+          <%= link_to "view", @property.payment, "target" => "_blank", class: "pure-button", id: "view_payment" %>
         <% end %>
         <%= f.filepicker_field :payment, button_text: property_payment(@property), button_class: "upload-photo upload-payment pure-button subtle-button", onchange: "onPropertyPaymentUpload(event)" %>
       </div>
@@ -54,7 +55,7 @@
       <div class="input contract-input">
         <%= label_tag :contract %>
         <% if @property.contract && @property.contract != "" %>
-          <%= link_to "View", @property.contract, "target" => "_blank", class: "pure-button", id: "view_contract" %>
+          <%= link_to "view", @property.contract, "target" => "_blank", class: "pure-button", id: "view_contract" %>
         <% end %>
         <%= f.filepicker_field :contract, button_text: property_contract(@property), button_class: "upload-photo upload-contract pure-button subtle-button", onchange: "onPropertyContractUpload(event)" %>
       </div>

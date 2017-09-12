@@ -120,6 +120,18 @@
 	}
 }
 
+#zillow-url-container {
+	position: relative;
+
+	#open-zillow-url {
+		position: absolute;
+		top: 29px;
+		left: 150px;
+		font-size: 12px;
+		padding: 5px 10px;
+	}
+}
+
 
 /* _quick_checkout */
 

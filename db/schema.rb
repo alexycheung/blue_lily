@@ -81,12 +81,12 @@ ActiveRecord::Schema.define(version: 20170802181053) do
 
   create_table "units", force: :cascade do |t|
     t.integer  "item_id",        null: false
-    t.string   "condition",      null: false
     t.decimal  "purchase_price", null: false
     t.decimal  "sale_price"
     t.datetime "destroyed_at"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "condition"
     t.index ["item_id"], name: "index_units_on_item_id", using: :btree
   end
 
